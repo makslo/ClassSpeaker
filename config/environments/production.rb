@@ -53,6 +53,13 @@ ClassSpeaker::Application.configure do
                                   template/jqBootstrapValidation.js
                                   template/jquery-1.8.3.min.js
                                   template/jquery.fitvids.js
+                                  base.css
+                                  blue.css
+                                  bootstrap-responsive.css
+                                  bootstrap-responsive.min.css
+                                  bootstrap.css
+                                  bootstrap.min.css
+                                  glyphicons.css
     )
 
   # Disable delivery errors, bad email addresses will be ignored
