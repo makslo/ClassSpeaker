@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>ClassSpeaker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ClassSpeaker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Evan Clemente">
+	<%= stylesheet_link_tag    "application.css", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap.min.css"%>
+	<%= stylesheet_link_tag    "bootstrap-responsive.min.css"%>
+	<%= stylesheet_link_tag    "glyphicons.css"%>
+	<%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Open+Sans:400,300"%>
+    <%= stylesheet_link_tag    "base.css"%>
+	<%= stylesheet_link_tag    "blue.css"%>
+	
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<%= javascript_include_tag "application" %>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="favicon.png">
+    <%= csrf_meta_tags %>
+  </head>  
 
+  <body>
+
+       <p class="notice" style="display:none"><%= notice %></p>
+       <p class="alert" style="display:none"><%= alert %></p>
 <%= yield %>
 
-</body>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"%>
+    <%= javascript_include_tag "template/bootstrap.min.js"%>
+	<%= javascript_include_tag "template/jquery.fitvids.js"%>
+	<%= javascript_include_tag "template/jqBootstrapValidation.js"%>
+	<%= javascript_include_tag "template/bounce.js"%>	
+
+  </body>
 </html>

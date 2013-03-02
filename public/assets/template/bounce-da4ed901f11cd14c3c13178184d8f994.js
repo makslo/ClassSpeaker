@@ -1,0 +1,4 @@
+/* ===================================================
+ * bounce.js v2.1
+ * ========================================================== */
+$(document).ready(function(){function e(){scrollPos=$(this).scrollTop(),$("#landingSlide").css({"background-position":"center "+(200+scrollPos/4)+"px"})}$(".progress-skills").each(function(){var e=$(this),t=e.attr("data-label");percent=e.attr("data-percent")+"%",e.find(".bar").text(t+" "+"("+percent+")").animate({width:percent})}),$(".js-video").fitVids(),$("input").not("[type=submit]").jqBootstrapValidation(),$(window).scroll(function(){e()}),$("#totop").click(function(){return $("html, body").animate({scrollTop:0},300),!1})});
