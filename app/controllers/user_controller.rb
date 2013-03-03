@@ -43,7 +43,10 @@ class UserController < ApplicationController
 	def book
 		user_to = User.find(params[:to_id])
 		user_from = User.find(params[:from_id])
-		message = {:subject=>params[:subject],:students=>params[:students],:body=>params[:body]}
+		message = {
+			:size=>params[:size],
+			:gender=>params[:gender],
+			:body=>params[:body]}
 		UserMailer.apt_speaker(user_to,user_from,message).deliver
 		UserMailer.apt_teacher(user_to,user_from,message).deliver
 		redirect_to root_url
