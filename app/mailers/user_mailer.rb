@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "notifications@example.com"
+  default :from => "notifications@example.com", :host=>"www.classspeaker.com"
  
   def apt_speaker(user_to,user_from,message)
   	  	@user_from = user_from
