@@ -59,10 +59,10 @@ template/jquery-1.8.3.min.js: template/jquery-1.8.3.min-f0be527d7892ef260a72ac74
 template/jquery-1/index.8.3.min.js: template/jquery-1.8.3.min-f0be527d7892ef260a72ac74ae956458.js
 template/jquery.fitvids.js: template/jquery.fitvids-747eb6cbe8e9c7bcc997c0b36ec29318.js
 template/jquery/index.fitvids.js: template/jquery.fitvids-747eb6cbe8e9c7bcc997c0b36ec29318.js
-application.css: application-68f1d2886d1f991dd45c888b17d1666a.css
-application/index.css: application-68f1d2886d1f991dd45c888b17d1666a.css
-base.css: base-ba82ea059161a6c630deb303c553ff40.css
-base/index.css: base-ba82ea059161a6c630deb303c553ff40.css
+application.css: application-88c2adc4e1887bcd0729320c22ae8783.css
+application/index.css: application-88c2adc4e1887bcd0729320c22ae8783.css
+base.css: base-5411446ba17638a22afd53935ef676b6.css
+base/index.css: base-5411446ba17638a22afd53935ef676b6.css
 blue.css: blue-15b37993c8cb26f70e70ca0c186f0ed0.css
 blue/index.css: blue-15b37993c8cb26f70e70ca0c186f0ed0.css
 bootstrap-responsive.css: bootstrap-responsive-51dbdd62a6ab38e07148571d814a5eed.css
