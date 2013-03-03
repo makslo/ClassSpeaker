@@ -40,8 +40,10 @@
       ]),:multiple=>true%><br>
       4. Are there students with Special Needs? If so, what modification may be necessary?<br>
   	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Comments..."%><br>
-    Please share with the speaker any other relevant information about the students in this class.<br>
+    5. Please share with the speaker any other relevant information about the students in this class.<br>
     <%=text_area_tag :students, nil, :rows=>3, :placeholder=>"Comments..."%><br>
+    6. Location of your class<br>
+    <%=text_field_tag :gender, nil, :placeholder=>"More male, more female, equal?"%><br>
   	<%=hidden_field_tag :to_id, @speaker.id%>
   	<%=hidden_field_tag :from_id, current_user.id%>
   </div>
