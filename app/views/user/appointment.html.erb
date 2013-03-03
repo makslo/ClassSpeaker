@@ -24,6 +24,9 @@
     You're about to open your students' eyes to a new career path.  Please answer the following questions to help the speaker better understand the opportunity.<br><br>
     1. Number of students the speaker will be speaking to:<br>
   	<%=select_tag :size, options_for_select(["1-20","21-50","50-200","200+"])%><br>
+    2. General Makeup:<br>
+    <%=text_field_tag :students, nil, :placeholder=>"About students"%><br>
+    3. General Character of Class (check up to 3):<br>
     <%=select_tag :course, options_for_select([
         "Motivated Learners",
         "Struggling Learners",
@@ -36,7 +39,8 @@
         "Inquisitive",
         "Self-directed",
       ]),:multiple=>true%><br>
-  	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Additional Comments..."%>
+      4. Are there students with Special Needs? If so, what modification may be necessary?<br>
+  	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Comments..."%><br>
   	<%=hidden_field_tag :to_id, @speaker.id%>
   	<%=hidden_field_tag :from_id, current_user.id%>
   </div>
