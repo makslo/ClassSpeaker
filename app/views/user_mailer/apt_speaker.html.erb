@@ -11,7 +11,7 @@
 
 <p>Number of students: <%=@message[:size]%></p> 
 
-<p>Gender makeup: <%=@message[:gender] || "None"%></p>
+<p>Gender makeup: <%=@message[:gender] || "N/A"%></p>
 
 <p>Course info:<p>
 	<ul>
@@ -32,7 +32,7 @@
 <p>No Skype</p>
 <%end%>
 
-<p>If you would like to speak with these students, please reply to each other via this email, and please visit <%=link_to "THIS PAGE",curriculum_speaker_url %> to prepare yourself for a successful event.  Good luck!</p>
+<p>If you would like to speak with these students, please reply to each other via this email, and please visit <%=link_to "THIS PAGE",'/curriculum/speaker' %> to prepare yourself for a successful event.  Good luck!</p>
 
 <p>Sincerely</p>
 
