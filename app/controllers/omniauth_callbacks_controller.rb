@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	def linkedin
-		render :text=> request.env["omniauth.auth"]
+		render :text=> request.env["omniauth.auth"]["info"]
 		
 	end
 
