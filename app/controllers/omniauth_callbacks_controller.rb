@@ -1,9 +1,9 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-	def linkedin
+	def tmp
 		render :text => request.env["omniauth.auth"].to_json
 	end
 
-	def tmp
+	def linkedin
 		user = User.from_omniauth(request.env["omniauth.auth"])
 		if user.persisted?
 	      flash.notice = "Signed in!"
