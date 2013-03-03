@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	  where(auth.slice(:provider, :uid)).first_or_create do |user|
 	    user.provider = auth.provider
 	    user.uid = auth.uid
-	    user.speaker = true
+	    user.speaker = "1"
 	    user.email = auth.info.email
 	    user.image = auth.info.image
 	  end

@@ -1,0 +1,26 @@
+  <div id="content" class="">
+    <div class="container">
+      <div class="row">
+      	<div class="span12">
+
+      		<%=form_tag teacher_url, :class=>"form-horizontal" do%>
+      		<%=select_tag :career, options_for_select(SpeakerProfile.new.get_careers)%>
+      		<%=select_tag :school, options_for_select(["Elementary School", "Middle School", "High School", "College"])%>
+      		<%=text_field_tag :location, nil,:placeholder=>"Location"%>
+      		<%=submit_tag "Find Speakers",:class=>"btn btn-primary"%>
+      		<%end%>
+
+      		<%if @speakers && @speakers.size>0%>
+      		<%@speakers.each do |s|%>
+      		<%=link_to appointment_url(s) do%>
+	      		<div>
+	      			<%=image_tag s.user.image%> <%=s.career%>
+	      		</div>
+      		<%end%>
+      		<%end%>
+      		<%end%>
+
+      	</div>
+      </div>
+    </div>
+  </div>

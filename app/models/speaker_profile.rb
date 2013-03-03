@@ -6,4 +6,8 @@ class SpeakerProfile < ActiveRecord::Base
   def get_careers
   	CAREERS
   end
+
+  def self.find_speakers(user_career)
+  	where(career: user_career)
+  end
 end

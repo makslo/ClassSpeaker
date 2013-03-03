@@ -1,0 +1,16 @@
+  <div id="content" class="">
+    <div class="container">
+      <div class="row">
+      	<div class="span12">
+      		<%if @profile.nil?%>
+      			<h2>Welcome,</h2>
+      			<p>Please answer some questions to help teachers find you</p>
+      			<%=render 'user/profile_form'%>
+      		<%else%>
+      			<h2>Thanks!</h2>
+      			<p>We'll notify you when someone invites you to speak about <%=@profile.career%>!</p>
+      		<%end%>
+        </div>
+      </div>
+    </div>
+  </div>
