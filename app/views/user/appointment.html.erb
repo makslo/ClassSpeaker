@@ -24,7 +24,7 @@
     1. Number of students the speaker will be speaking to:<br>
   	<%=select_tag :size, options_for_select(["1-20","21-50","50-200","200+"])%><br>
     2. Gender Makeup:<br>
-    <%=text_field_tag :students, nil, :placeholder=>"More male, more female, equal?"%><br>
+    <%=text_field_tag :gender, nil, :placeholder=>"More male, more female, equal?"%><br>
     3. General Character of Class (check up to 3):<br>
     <%=select_tag :course, options_for_select([
         "Motivated Learners",
@@ -40,7 +40,8 @@
       ]),:multiple=>true%><br>
       4. Are there students with Special Needs? If so, what modification may be necessary?<br>
   	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Comments..."%><br>
-
+    Please share with the speaker any other relevant information about the students in this class.<br>
+    <%=text_area_tag :students, nil, :rows=>3, :placeholder=>"Comments..."%><br>
   	<%=hidden_field_tag :to_id, @speaker.id%>
   	<%=hidden_field_tag :from_id, current_user.id%>
   </div>
