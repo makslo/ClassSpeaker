@@ -557,5 +557,5 @@ ul.plans {
 }
 
 @media (max-width: 979px) {
-  #landing a.btn { margin: 20px 0; }
+  #landing a.btn { margin: 10px 0; }
 }
