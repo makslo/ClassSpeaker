@@ -2,15 +2,30 @@
     <div class="container">
       <div class="row">
       	<div class="span12">
-
       		<%=form_tag teacher_url, :class=>"form-horizontal" do%>
-      		<%=select_tag :career, options_for_select(SpeakerProfile.new.get_careers)%>
-      		<%=select_tag :school, options_for_select(["Elementary School", "Middle School", "High School", "College"])%>
-      		<%loc = SpeakerProfile.new.get_locations%>
-      		<%if !loc.empty?%>
-      		<%=select_tag :location, options_for_select(loc)%>
-      		<%end%>
-      		<%=submit_tag "Find Speakers",:class=>"btn btn-primary"%>
+          <table>
+            <tr style="vertical-align:top;">
+              <td style="vertical-align:top;">Profession</td>
+              <td style="vertical-align:top;">Level</td>
+              <td style="vertical-align:top;">Experience<br>(Yrs)</td>
+              <td style="vertical-align:top;">Location</td>
+              <td style="vertical-align:top;">Availability</td>
+              <td style="vertical-align:top;"></td>
+            </tr>
+            <tr>
+              <%one = ["Any"]+SpeakerProfile.new.get_careers%>
+              <%two = ["Any","Elementary School", "Middle School", "High School", "College"]%>
+              <%three = Array.new(10){|a| a+1}.prepend("Any")%>
+              <%four = ["Any"]+SpeakerProfile.new.get_locations%>
+              <%five = ["Any","In Person", "Via Skype","Both"]%>
+      		<td><%=select_tag :career, options_for_select(one.collect{|s| [s,one.index(s)]}),:class=>"input-medium"%></td>
+      		<td><%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]}),:class=>"input-medium"%></td>
+          <td><%=select_tag :years, options_for_select(three.collect{|s| [s,three.index(s)]}),:class=>"input-mini"%></td>
+          <td><%=select_tag :location, options_for_select(four.collect{|s| [s,s]}),:class=>"input-medium"%></td>
+          <td><%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]}),:class=>"input-medium"%></td>
+      		<td><%=submit_tag "Find Speakers",:class=>"btn btn-primary"%></td>
+        </tr>
+        </table>
       		<%end%>
 
       		<%if @speakers && @speakers.size>0%>
@@ -24,7 +39,9 @@
 	      			<%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%></td></tr>
 	      		</table>
 	      		</div>
+            <hr>
       		<%end%>
+          <%= will_paginate @speakers %>
       		<%end%>
 
       	</div>
