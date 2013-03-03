@@ -1,0 +1,9 @@
+class SpeakerProfile < ActiveRecord::Base
+  attr_accessible :bio, :career, :college, :elementary, :high, :in_person, :location, :middle, :skype, :user_id, :years
+  belongs_to :user
+  CAREERS = %w{ Finance Accounting Singer}
+
+  def get_careers
+  	CAREERS
+  end
+end

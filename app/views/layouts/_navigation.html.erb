@@ -9,6 +9,12 @@
           </a>		
           <a class="brand" href="index.html">Class Speaker</a>
 		  <div class="nav-collapse collapse">
+		  	<%if user_signed_in?%>
+            <%=link_to "sign out", destroy_user_session_url, :class=>"btn btn-primary pull-right", :method=>:delete%>
+            <%if !current_user.provider.nil?%>
+            <%=image_tag current_user.image, :size=>"40x40", :class=>"pull-right"%>
+            <%end%>
+            <%end%>
             <ul class="nav pull-right animated">
 			  <li class="dropdown active">
 			    <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Home <b class="caret"></b></a>

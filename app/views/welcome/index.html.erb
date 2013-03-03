@@ -4,10 +4,10 @@
 	  <div class="container">  
 	    <div class="row">
 		  <div class="span5">
-		    <h1>Connect students with <i>real</i> career options</h1>	
+		    <h2>Connect students with <i>real</i> career options</h2>	
 			<p>When students are exposed to great guest speakers in their class, they are 80% more likely to stay in school</p>
-		    <p><a href="#" class="btn btn-primary btn-action">I'm a teacher</a>
-		       <a href="#" class="btn btn-primary btn-action pull-right">I want to speak</a></p>  
+		    <p><%=link_to "I'm a teacher", new_user_registration_url,:class=>"btn btn-primary btn-action"%>
+		  		<a href="#myModal" role="button" class="btn btn-primary btn-action pull-right" data-toggle="modal">I want to speak</a>
 		  </div>
 		  <div class="span7">
 		    <div class="js-video">
@@ -125,4 +125,18 @@
 		</div>	  
       </div>	  
     </div>
+
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header txt-middle">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Identity Verification</h3>
+  </div>
+  <div class="modal-body txt-middle">
+    <%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn" do %>
+		    <%=image_tag 'linkedin.png', :size=>'40x40'%>  Sign in with LinkedIn
+			<%end%>
+  </div>
+</div>
 

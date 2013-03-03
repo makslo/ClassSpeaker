@@ -1,0 +1,67 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:class=>"form-horizontal"}) do |f| %>
+
+<div class="row">
+
+	<div class="span8">
+		  <%= devise_error_messages! %>
+		<%=f.fields_for :speaker_profile, User.new.build_speaker_profile do |b|%>
+		<div class="control-group">
+		<%= b.label :career, "My primary career role", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.select :career, SpeakerProfile.new.get_careers %></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :years, "Years of experience", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_field :years, :placeholder=>"Years of experience" %></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :location, "My location", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_field :location, :placeholder=>"Location" %></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :bio, "What are your main activities on the job:", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_area :bio, :placeholder=>"Activities", :rows=>'3' %></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :elementary, "I would like to speak to:", :class=>"control-label" %>
+		  	<div class="controls">
+		  		<table>
+		  			<tr><td><%= b.check_box :elementary %></td><td style="padding-top:5px;">Elementary School</td>
+	  				<td><%= b.check_box :middle %></td><td style="padding-top:5px;">Middle School</td></tr>
+	  				<tr><td><%= b.check_box :high %></td><td style="padding-top:5px;">High School</td>
+	  				<td><%= b.check_box :college %></td><td style="padding-top:5px;">College & University</td></tr>
+		  		</table>
+			</div>
+		</div>
+		<div class="control-group">
+		<%= b.label :in_person, "I’d prefer speaking:", :class=>"control-label" %>
+		  	<div class="controls">
+		  		<table>
+		  			<tr><td><%= b.check_box :in_person %></td><td style="padding-top:5px;">In person</td>
+	  				<td><%= b.check_box :skype %></td><td style="padding-top:5px;">Via Skype</td></tr>
+		  		</table>
+			</div>
+		</div>
+		<div class="control-group">
+		  	<div class="controls">
+		  	<%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn" do %>
+		    <%=image_tag 'linkedin.png', :size=>'40x40'%>  Sign up with LinkedIn
+			<%end%>
+		    </div>
+		</div>
+		<%end%>
+		<div class="control-group">
+		  	<div class="controls">
+		  <div><%= f.submit "Sign up", :class=>"btn btn-large btn-primary" %></div>
+  <br>
+  <%= render "devise/shared/links" %>
+	</div>
+</div>
+
+
+			</div>
+		</div>
+		<% end %>

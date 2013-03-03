@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+
+ .reg-in {
+	background:#eeeeee;
+	border-radius:5px;
+	width:200px;
+ }
+
+ tr, td {
+ 	vertical-align:middle;
+ 	padding:0 10px 10px 10px;
+ }

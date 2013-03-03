@@ -1,7 +1,12 @@
 ClassSpeaker::Application.routes.draw do
-  devise_for :users
+
+    devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to=>"welcome#index"
+
+  match 'profile' => 'user#profile'
+  match 'teacher' => 'user#teacher'
+  match 'speaker' => 'user#speaker'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

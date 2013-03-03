@@ -11,12 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302153427) do
+ActiveRecord::Schema.define(:version => 20130302230802) do
+
+  create_table "speaker_profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "career"
+    t.integer  "years"
+    t.string   "location"
+    t.text     "bio"
+    t.boolean  "elementary"
+    t.boolean  "middle"
+    t.boolean  "high"
+    t.boolean  "college"
+    t.boolean  "in_person"
+    t.boolean  "skype"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",  :null => false
     t.string   "encrypted_password",     :default => "",  :null => false
     t.string   "speaker",                :default => "0", :null => false
+    t.string   "image"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -27,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130302153427) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

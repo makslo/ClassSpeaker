@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  career: MyString
+  years: 1
+  location: MyString
+  bio: MyText
+  elementary: false
+  middle: false
+  high: false
+  college: false
+  in_person: false
+  skype: false
+
+two:
+  user_id: 1
+  career: MyString
+  years: 1
+  location: MyString
+  bio: MyText
+  elementary: false
+  middle: false
+  high: false
+  college: false
+  in_person: false
+  skype: false
