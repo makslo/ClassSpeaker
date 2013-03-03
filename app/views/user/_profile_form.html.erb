@@ -1,4 +1,12 @@
-<%=form_for @profile do |b|%>
+<%=form_for @profile, :html=>{:class=>"form-horizontal"} do |b|%>
+
+<%if @profile.errors.messages.any?%>
+<%@profile.errors.messages.each do |k,v|%>
+<div style="color:red;">
+<%=k%>: <%=v[0]%>
+</div>
+<%end%>
+<%end%>
 		<div class="control-group">
 		<%= b.label :career, "My primary career role", :class=>"control-label" %>
 		  	<div class="controls">

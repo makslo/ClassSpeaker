@@ -5,6 +5,7 @@ ClassSpeaker::Application.routes.draw do
   root :to=>"welcome#index"
 
   match 'edit/profile' => 'user#profile'
+  match 'update/profile/:id' => 'user#update', :as=>:update_profile
   match 'teacher' => 'user#teacher'
   match 'speaker' => 'user#speaker'
 

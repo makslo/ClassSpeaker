@@ -6,17 +6,23 @@
       		<%=form_tag teacher_url, :class=>"form-horizontal" do%>
       		<%=select_tag :career, options_for_select(SpeakerProfile.new.get_careers)%>
       		<%=select_tag :school, options_for_select(["Elementary School", "Middle School", "High School", "College"])%>
-      		<%=text_field_tag :location, nil,:placeholder=>"Location"%>
+      		<%loc = SpeakerProfile.new.get_locations%>
+      		<%if !loc.empty?%>
+      		<%=select_tag :location, options_for_select(loc)%>
+      		<%end%>
       		<%=submit_tag "Find Speakers",:class=>"btn btn-primary"%>
       		<%end%>
 
       		<%if @speakers && @speakers.size>0%>
       		<%@speakers.each do |s|%>
-      		<%=link_to appointment_url(s) do%>
 	      		<div>
-	      			<%=image_tag s.user.image%> <%=s.career%>
+	      			<table><tr><td>
+	      			<%=image_tag s.user.image%></td><td>
+	      			Career: <%=s.career%><br>
+	      			Location: <%=s.location%><br></td><td>
+	      			<%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%></td></tr>
+	      		</table>
 	      		</div>
-      		<%end%>
       		<%end%>
       		<%end%>
 

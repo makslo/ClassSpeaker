@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302230802) do
+ActiveRecord::Schema.define(:version => 20130303042147) do
+
+  create_table "feedbacks", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "speaker_profiles", :force => true do |t|
     t.integer  "user_id"

@@ -1,11 +1,19 @@
 class UserController < ApplicationController
 	def profile
-		@user = current_user
+		u = current_user
+		@profile = u.speaker_profile
+	end
+
+	def update
+		s = current_user.speaker_profile
+		s.update_attributes(params[:speaker_profile])
+		redirect_to speaker_url
+
 	end
 
 	def teacher
 		if params[:career]
-			@speakers = SpeakerProfile.find_speakers(params[:career])
+			@speakers = SpeakerProfile.find_speakers(params[:career],params[:location],params[:school])
 		end
 	end
 
@@ -21,8 +29,12 @@ class UserController < ApplicationController
 	def create_profile
 		u = current_user
 		p = u.build_speaker_profile(params[:speaker_profile])
-		p.save
+		if p.save
 		redirect_to speaker_url
+		else
+			@profile = p
+			render 'speaker'
+		end
 	end
 	def search
 		
