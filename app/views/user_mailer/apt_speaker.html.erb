@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+
+<p>Hi <%=@user_to.first_name%>,</p>
+
+<p><%=@user_from.first_name%> <%=@user_from.last_name%> has invited you to speak in their class.  You're both CC'ed here to get to know each other. Here's a bit of information about the speaking engagement:</p>
+
+<p>Number of students:</p> 
+
+<p>Some course info: <%=@message[:subject]%></p>
+
+<p>Number of students: <%=@message[:students]%></p>
+
+<%if !@message[:students].empty?%>
+<p>Aditional info: <%=@message[:body]%></p>
+<%end%>
+
+<p>If you would like to speak with these students, please reply to each other via this email, and please visit <%=link_to "THIS PAGE",curriculum_speaker_url %> to prepare yourself for a successful event.  Good luck!</p>
+
+<p>Sincerely</p>
+
+<p>The Class Speaker team</p>
+
+</body>
+</html>

@@ -13,6 +13,8 @@ ClassSpeaker::Application.routes.draw do
   match 'speaker/search' => "user#search"
   match 'appointment/:id' => 'user#appointment', :as=>:appointment
   match 'book' => 'user#book'
+  match 'curriculum/teacher' => 'user#curriculum_tch'
+  match 'curriculum/speaker' => 'user#curriculum_sp'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

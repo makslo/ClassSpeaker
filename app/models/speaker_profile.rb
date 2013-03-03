@@ -2,6 +2,9 @@ class SpeakerProfile < ActiveRecord::Base
   attr_accessible :bio, :career, :college, :elementary, :high, :in_person, :location, :middle, :skype, :user_id, :years
   
   validates :location, :presence => true
+  validates :bio, :presence => true
+  validates :career, :presence => true
+  validates :years, :presence => true
 
   belongs_to :user
   CAREERS = %w{ Finance Accounting Singer}
