@@ -5,13 +5,13 @@ class UserMailer < ActionMailer::Base
   	  	@user_from = user_from
   		@user_to = user_to
   		@message = message
-    mail(:to => user_to.email, :cc=>user_from.email, :from => "info@classspeaker.com", :subject => "speaker")
+    mail(:to => user_to.email, :cc=>user_from.email, :from => "info@classspeaker.com", :subject => "Speaker Invitation")
   end
 
   def apt_teacher(user_to,user_from,message)
   		@user_from = user_from
   		@user_to = user_to
   		@message = message
-  	 mail(:to => user_from.email, :cc=>user_to.email, :from => "info@classspeaker.com", :subject => "teacher")
+  	 mail(:to => user_from.email, :cc=>user_to.email, :from => "info@classspeaker.com", :subject => "Teacher Confirmation")
   end
 end
