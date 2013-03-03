@@ -525,3 +525,23 @@ ul.plans {
     display: none;
   }  
 }
+
+/* Adam's Overrides */
+/* ================ */
+
+/* Landing Page */
+
+#landing .container-fluid { padding: 0px; }
+#landing a.btn {
+  width: auto;
+  display: block;
+  float: none;
+}
+#landing h2.lead {
+   font-size: 32pt;
+   line-height: 40pt;
+}
+
+/* Base Styles */
+
+.btn { font-weight: 400; }
