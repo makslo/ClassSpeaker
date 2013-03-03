@@ -131,10 +131,12 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header txt-middle">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Identity Verification</h3>
+    <h3 id="myModalLabel">You're about to touch the future</h3>
   </div>
   <div class="modal-body txt-middle">
-    <%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn" do %>
+  	<div style="text-align:left;">Just tell us who you are, then teachers will be able to find you and invite you to speak.  YOU control which invitations you want to accept.
+</div>
+    <%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn btn-info" do %>
 		    <%=image_tag 'linkedin.png', :size=>'40x40'%>  Sign in with LinkedIn
 			<%end%>
   </div>
