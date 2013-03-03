@@ -1,4 +1,11 @@
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	
 	<div id="landing">
 	  <div class="container">  
@@ -34,7 +41,10 @@
 	  <div class="container">
 	    <div class="row">
 		  <div class="span12">
-			<h2>Great features of your product or service</h2>
+			<h2>Because <i>every</i> day should be "Career Day" Share: 
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out @ClassSpeaker - a site that pairs teachers with great guest speakers for their classes. http://bit.ly/classSpeaker #edtech">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</h2>
 		    <hr class="dashed">				
 		  </div>  
 		</div>  
@@ -148,8 +158,10 @@
   <div class="modal-body txt-middle">
   	<div style="text-align:left;">Just tell us who you are, then teachers will be able to find you and invite you to speak.  YOU control which invitations you want to accept.
 </div>
-    <%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn btn-info" do %>
-		    <%=image_tag 'linkedin.png', :size=>'40x40'%>  Sign in with LinkedIn
+  </div>
+  <div class="modal-footer">
+  	    <%=link_to user_omniauth_authorize_path(:linkedin), :class=>"btn btn-primary" do %>
+		    <%=image_tag 'linked.png', :size=>'30x30'%>  Sign in with LinkedIn
 			<%end%>
   </div>
 </div>
