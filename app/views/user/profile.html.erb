@@ -7,7 +7,7 @@
 		<div class="control-group">
 		<%= b.label :career, "My primary career role", :class=>"control-label" %>
 		  	<div class="controls">
-		   <%= b.select :career, SpeakerProfile.new.get_careers %></div>
+		   <%= b.text_field :career %></div>
 		</div>
 		<div class="control-group">
 		<%= b.label :years, "Years of experience", :class=>"control-label" %>
