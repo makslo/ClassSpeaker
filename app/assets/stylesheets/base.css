@@ -545,6 +545,13 @@ ul.plans {
    line-height: 40pt;
    margin-top: 40px;
 }
+#content ul li {
+  text-align: left;
+}
+#content img.guy {
+  float: left;
+  margin-right: 35px;
+}
 
 /* Base Styles */
 
