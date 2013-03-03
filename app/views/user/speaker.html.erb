@@ -8,10 +8,11 @@
       			<%=render 'user/profile_form'%>
       		<%else%>
       			<% if !flash[:success].nil?%>
-      			<div class='alert alert-success'>
-      				<button type="button" class="close" data-dismiss="alert">&times;</button>
-      				<%=flash[:success]%>
-      			</div>
+      			<script>
+            $(document).ready(function(){
+              $('.thanks-message').click();
+            });
+            </script>
       			<%end%>
       			<%=link_to "edit profile", edit_profile_url, :class=>"btn pull-right"%>
       		<%end%>
@@ -27,7 +28,7 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel"></h3>
   </div>
   <div class="modal-body">
     <p></p>
