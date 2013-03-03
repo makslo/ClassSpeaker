@@ -43,9 +43,18 @@ class SpeakerProfile < ActiveRecord::Base
       result << where(location: location)
     end
     search = result.empty? ? all : result.sum
+    clean = []
+    search.each do |s|
+      clean << s if !s.user.nil?
+    end
+    clean
   end
 
   def get_locations
-  	l = SpeakerProfile.all.map{|a| a.location if !a.location.blank?}
+    loc = []
+  	SpeakerProfile.all.each do |a|
+      loc << a.location if !a.location.blank? && !loc.include?(a.location)
+    end
+    loc
   end
 end

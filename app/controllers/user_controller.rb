@@ -27,6 +27,7 @@ class UserController < ApplicationController
 		u = current_user
 		p = u.build_speaker_profile(params[:speaker_profile])
 		if p.save
+			flash[:success]="You're in! You'll receive an email if a teacher invites you to speak in their class."
 		redirect_to speaker_url
 		else
 			@profile = p

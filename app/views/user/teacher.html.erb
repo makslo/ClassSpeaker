@@ -30,6 +30,7 @@
 
       		<%if @speakers && @speakers.size>0%>
       		<%@speakers.each do |s|%>
+          <%if s.user%>
 	      		<div>
 	      			<table><tr><td>
 	      			<%=image_tag s.user.image%></td><td>
@@ -40,6 +41,9 @@
 	      		</table>
 	      		</div>
             <hr>
+            <%end%>
+            
+            
       		<%end%>
           <%= will_paginate @speakers %>
       		<%end%>

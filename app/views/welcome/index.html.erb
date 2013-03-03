@@ -6,8 +6,10 @@
 		  <div class="span5">
 		    <h2>Connect students with <i>real</i> career options</h2>	
 			<p>When students are exposed to great guest speakers in their class, they are 80% more likely to stay in school</p>
+			<%if !user_signed_in?%>
 		    <p><%=link_to "I'm a teacher", new_user_registration_url,:class=>"btn btn-primary btn-action"%>
-		  		<a href="#myModal" role="button" class="btn btn-primary btn-action pull-right" data-toggle="modal">I want to speak</a>
+		  	<a href="#myModal" role="button" class="btn btn-primary btn-action pull-right" data-toggle="modal">I want to speak</a>
+		  	<%end%>
 		  </div>
 		  <div class="span7">
 		    <div class="js-video">
