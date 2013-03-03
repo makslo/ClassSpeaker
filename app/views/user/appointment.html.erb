@@ -3,10 +3,9 @@
       <div class="row">
       	<div class="span12">
       		<div class="page-header">
-			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small><%=@speaker.speaker_profile.career%></small></h1>
+			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small> <%=@speaker.speaker_profile.career%></small><br><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Schedule an Engagement</a></h1>
 			</div>
-      		<h1></h1>
-      		<a href="#myModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Schedule an Engagement</a>
+      		
 
       	</div>
       </div>
@@ -41,6 +40,7 @@
       ]),:multiple=>true%><br>
       4. Are there students with Special Needs? If so, what modification may be necessary?<br>
   	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Comments..."%><br>
+
   	<%=hidden_field_tag :to_id, @speaker.id%>
   	<%=hidden_field_tag :from_id, current_user.id%>
   </div>
