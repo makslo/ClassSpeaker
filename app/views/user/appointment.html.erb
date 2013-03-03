@@ -17,13 +17,25 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Get in touch with <%=@speaker.first_name%></h3>
+    <h3 id="myModalLabel">Invite <%=@speaker.first_name%> <%=@speaker.last_name%> to speak</h3>
   </div>
   <%=form_tag book_url do%>
-  <div class="modal-body txt-middle">
-    <p>Tell them a bit about your class:</p><br>
-  	<%=text_field_tag :subject,  nil, :placeholder=>"What's the subject?"%><br>
-    <%=text_field_tag :students,  nil, :placeholder=>"How many students?"%><br>
+  <div class="modal-body">
+    You're about to open your students' eyes to a new career path.  Please answer the following questions to help the speaker better understand the opportunity.<br><br>
+    1. Number of students the speaker will be speaking to:<br>
+  	<%=select_tag :size, options_for_select(["1-20","21-50","50-200","200+"])%><br>
+    <%=select_tag :course, options_for_select([
+        "Motivated Learners",
+        "Struggling Learners",
+        "Dependent on teacher",
+        "Independent thinkers",
+        "College-bound",
+        "Work-force bound",
+        "Cooperative",
+        "Talkative",
+        "Inquisitive",
+        "Self-directed",
+      ]),:multiple=>true%><br>
   	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Additional Comments..."%>
   	<%=hidden_field_tag :to_id, @speaker.id%>
   	<%=hidden_field_tag :from_id, current_user.id%>

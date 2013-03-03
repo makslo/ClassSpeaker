@@ -7,7 +7,6 @@
             <tr style="vertical-align:top;">
               <td style="vertical-align:top;">Profession</td>
               <td style="vertical-align:top;">Level</td>
-              <td style="vertical-align:top;">Experience<br>(Yrs)</td>
               <td style="vertical-align:top;">Location</td>
               <td style="vertical-align:top;">Availability</td>
               <td style="vertical-align:top;"></td>
@@ -18,11 +17,11 @@
               <%three = Array.new(10){|a| a+1}.prepend("Any")%>
               <%four = ["Any"]+SpeakerProfile.new.get_locations%>
               <%five = ["Any","In Person", "Via Skype","Both"]%>
-      		<td><%=select_tag :career, options_for_select(one.collect{|s| [s,one.index(s)]}),:class=>"input-medium"%></td>
+      		<td><%=select_tag :career, options_for_select(one.collect{|s| [s,one.index(s)]}), {:disabled=>true,:class=>"input-medium"}%></td>
       		<td><%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]}),:class=>"input-medium"%></td>
-          <td><%=select_tag :years, options_for_select(three.collect{|s| [s,three.index(s)]}),:class=>"input-mini"%></td>
           <td><%=select_tag :location, options_for_select(four.collect{|s| [s,s]}),:class=>"input-medium"%></td>
           <td><%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]}),:class=>"input-medium"%></td>
+          <%=hidden_field_tag :years, 0%>
       		<td><%=submit_tag "Find Speakers",:class=>"btn btn-primary"%></td>
         </tr>
         </table>
