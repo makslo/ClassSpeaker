@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:linkedin]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes, :provider, :uid, :last_name, :first_name
   # attr_accessible :title, :body
-
+  validates_confirmation_of :password
   has_one :speaker_profile
   accepts_nested_attributes_for :speaker_profile, allow_destroy: true
 
@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 	    user.provider = auth.provider
 	    user.uid = auth.uid
 	    user.speaker = "1"
+	    user.first_name = auth.info.first_name
+	    user.last_name = auth.info.last_name
 	    user.email = auth.info.email
 	    user.image = auth.info.image
 	  end

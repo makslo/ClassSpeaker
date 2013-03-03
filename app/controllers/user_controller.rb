@@ -8,7 +8,6 @@ class UserController < ApplicationController
 		s = current_user.speaker_profile
 		s.update_attributes(params[:speaker_profile])
 		redirect_to speaker_url
-
 	end
 
 	def teacher
@@ -41,5 +40,13 @@ class UserController < ApplicationController
 	end
 	def appointment
 		@speaker = SpeakerProfile.find(params[:id]).user
+	end
+	def book
+		user_to = User.find(params[:to_id])
+		user_from = User.find(params[:from_id])
+		message = {:subject=>"Test Subject"}
+		UserMailer.apt_speaker(user_to,user_from,message).deliver
+		UserMailer.apt_teacher(user_to,user_from,message).deliver
+		redirect_to root_url
 	end
 end

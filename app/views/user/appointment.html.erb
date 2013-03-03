@@ -2,7 +2,10 @@
     <div class="container">
       <div class="row">
       	<div class="span12">
-      		<h1><%=image_tag @speaker.image%> <%=@speaker.speaker_profile.career%></h1>
+      		<div class="page-header">
+			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small><%=@speaker.speaker_profile.career%></small></h1>
+			</div>
+      		<h1></h1>
       		<a href="#myModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Schedule an Engagement</a>
 
       	</div>
@@ -14,13 +17,19 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Message</h3>
   </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
+  <%=form_tag book_url do%>
+  <div class="modal-body txt-middle">
+  	<%=text_field_tag :subject,  nil, :placeholder=>"Your School Name"%><br>
+    <%=text_field_tag :subject,  nil, :placeholder=>"Class Name"%><br>
+  	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Additional Comments..."%>
+  	<%=hidden_field_tag :to_id, @speaker.id%>
+  	<%=hidden_field_tag :from_id, current_user.id%>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <%=submit_tag "Send", :class=>"btn btn-primary"%>
   </div>
+  <%end%>
 </div>

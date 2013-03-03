@@ -18,6 +18,7 @@
 	      		<div>
 	      			<table><tr><td>
 	      			<%=image_tag s.user.image%></td><td>
+	      			<b><%=s.user.first_name%> <%=s.user.last_name%></b><br>
 	      			Career: <%=s.career%><br>
 	      			Location: <%=s.location%><br></td><td>
 	      			<%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%></td></tr>
