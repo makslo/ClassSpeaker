@@ -37,12 +37,16 @@
 	      			<b><%=s.user.first_name%> <%=s.user.last_name%></b><br>
 	      			Career: <%=s.career%><br>
 	      			Location: <%=s.location%><br></td><td>
+              <%if !user_signed_in? %>
+              <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary"%></td></tr>
+              <%elsif current_user.speaker!="1"%>
 	      			<%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%></td></tr>
+              <%end%>
 	      		</table>
 	      		</div>
             <hr>
             <%end%>
-            
+
             
       		<%end%>
           <%= will_paginate @speakers %>
