@@ -5,7 +5,16 @@
       		<div class="page-header">
 			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small> <%=@speaker.speaker_profile.career%></small><br><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Schedule an Engagement</a></h1>
 			</div>
-      		
+      <div class="row">
+        <div class="span4">
+          <table>
+            <tr><th>Experience</th><th>Location</th></tr>
+            <tr><td><%=@speaker.speaker_profile.years%> yrs</td><td><%=@speaker.speaker_profile.location%></td></tr>
+          </table>
+          <h3>Skills & Activities</h3>
+          <p style="padding:10px;"><%=@speaker.speaker_profile.bio%></p>
+        </div>
+      </div>
 
       	</div>
       </div>
@@ -39,7 +48,7 @@
         "Self-directed",
       ]),:multiple=>true%><br>
       4. Are there students with Special Needs? If so, what modification may be necessary?<br>
-  	<%=text_area_tag :body, nil, :rows=>3, :placeholder=>"Comments..."%><br>
+  	<%=text_area_tag :needs, nil, :rows=>3, :placeholder=>"Comments..."%><br>
     5. Please share with the speaker any other relevant information about the students in this class.<br>
     <%=text_area_tag :students, nil, :rows=>3, :placeholder=>"Comments..."%><br>
     6. Location of your class<br>

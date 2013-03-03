@@ -9,14 +9,27 @@
 
 <p><%=@user_from.first_name%> <%=@user_from.last_name%> has invited you to speak in their class.  You're both CC'ed here to get to know each other. Here's a bit of information about the speaking engagement:</p>
 
-<p>Number of students:</p> 
+<p>Number of students: <%=@message[:size]%></p> 
 
-<p>Some course info: <%=@message[:subject]%></p>
+<p>Gender makeup: <%=@message[:gender] || "None"%></p>
 
-<p>Number of students: <%=@message[:students]%></p>
+<p>Course info:<p>
+	<ul>
+	<%@message[:course].each do |m|%>
+	<li><%=m%></li>
+	<%end%>
+	</ul>
 
-<%if !@message[:students].empty?%>
-<p>Aditional info: <%=@message[:body]%></p>
+<p>Special needs?: <%=@message[:needs] || "None"%></p>
+
+<p>Students info: <%=@message[:students] || "None"%></p>
+
+<p>Location: <%=@message[:location] || "None"%></p>
+
+<%if !@message[:skype]=="1"%>
+<p>Skype option</p>
+<%else%>
+<p>No Skype</p>
 <%end%>
 
 <p>If you would like to speak with these students, please reply to each other via this email, and please visit <%=link_to "THIS PAGE",curriculum_speaker_url %> to prepare yourself for a successful event.  Good luck!</p>

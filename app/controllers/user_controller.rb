@@ -46,7 +46,12 @@ class UserController < ApplicationController
 		message = {
 			:size=>params[:size],
 			:gender=>params[:gender],
-			:body=>params[:body]}
+			:course=>params[:course],
+			:needs=>params[:needs],
+			:students=>params[:students],
+			:location=>params[:location],
+			:skype=>params[:skype]
+		}
 		UserMailer.apt_speaker(user_to,user_from,message).deliver
 		UserMailer.apt_teacher(user_to,user_from,message).deliver
 		redirect_to root_url
