@@ -536,12 +536,26 @@ ul.plans {
   width: auto;
   display: block;
   float: none;
+  padding: 13px 30px;
+  font-weight: 400;
+  font-size: 15pt;
 }
 #landing h2.lead {
    font-size: 32pt;
    line-height: 40pt;
+   margin-top: 40px;
 }
 
 /* Base Styles */
 
 .btn { font-weight: 400; }
+
+/* Not a phone, but not a very wide monitor. */ 
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  #landing a.btn { font-size: 12pt; }
+}
+
+@media (max-width: 979px) {
+  #landing a.btn { margin: 20px 0; }
+}
