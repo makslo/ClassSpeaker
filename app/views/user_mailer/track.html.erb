@@ -1,0 +1,15 @@
+<h1>New Booking:</h1>
+
+<p>
+From: <%=@booking.email_from%><br>
+To: <%=@booking.email_to%><br>
+On: <%=@booking.date%>
+</p>
+
+<p>Stats:</p>
+<%sp = User.where(speaker: "1").size%>
+<p>
+Speaker Accounts: <%=sp%><br>
+Speaker Profiles: <%=SpeakerProfile.all.size%><br>
+Teachers: <%=User.all.size-sp%>
+</p>
