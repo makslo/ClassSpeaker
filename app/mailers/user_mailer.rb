@@ -14,9 +14,9 @@ class UserMailer < ActionMailer::Base
   		@message = message
   	 mail(:to => user_from.email, :cc=>user_to.email, :from => "info@classspeaker.com", :subject => "Teacher Confirmation")
   end
- # :to => "acohen@brainscape.com",
+ # 
   def track(booking)
     @booking = booking
-    mail(to: "maximlakin@gmail.com", :from => "info@classspeaker.com", :subject => "BOOKED!")
+    mail(:to => "acohen@brainscape.com", cc: "maximlakin@gmail.com", :from => "info@classspeaker.com", :subject => "Speaker Invited!")
   end
 end
