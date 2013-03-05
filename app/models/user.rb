@@ -37,7 +37,12 @@ class User < ActiveRecord::Base
 	end
 
 	def password_required?
-	  false
+		if !uid.blank?
+			false
+		else
+			super
+		end
+
 	end
 
 	def update_with_password(params, *options)
