@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  count: 1
+  email_to: MyString
+  email_from: MyString
+  date: MyString
+
+two:
+  count: 1
+  email_to: MyString
+  email_from: MyString
+  date: MyString

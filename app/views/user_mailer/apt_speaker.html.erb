@@ -13,12 +13,14 @@
 
 <p>Gender makeup: <%=@message[:gender] || "N/A"%></p>
 
+<% if !@message[:course].nil? %>
 <p>Course info:<p>
 	<ul>
 	<%@message[:course].each do |m|%>
 	<li><%=m%></li>
 	<%end%>
 	</ul>
+<%end%>
 
 <p>Special needs?: <%=@message[:needs] || "None"%></p>
 

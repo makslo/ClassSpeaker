@@ -54,6 +54,7 @@ class UserController < ApplicationController
 		}
 		UserMailer.apt_speaker(user_to,user_from,message).deliver
 		UserMailer.apt_teacher(user_to,user_from,message).deliver
+		Booking.create(count: Booking.all.size+1,email_to: user_to.email,email_from: user_from.email,date: Time.now)
 		redirect_to root_url
 	end
 

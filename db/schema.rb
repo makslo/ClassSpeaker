@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303061158) do
+ActiveRecord::Schema.define(:version => 20130305021336) do
+
+  create_table "bookings", :force => true do |t|
+    t.integer  "count"
+    t.string   "email_to"
+    t.string   "email_from"
+    t.string   "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "feedbacks", :force => true do |t|
     t.text     "content"
