@@ -36,8 +36,8 @@
               </div>
 	      			<div style="display:inline-block;vertical-align:top;width:350px;margin-left:20px;padding:10px;">
                    <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
-    	      			Career: <%=s.career%> <span class="muted">(<%=s.years%> yrs)</span><br>
-    	      			Location: <%=s.location%><br>
+    	      			<%=s.career%> <span class="muted">(<%=s.years%> yrs)</span><br>
+    	      			<%=s.location%><br>
                   <%if !user_signed_in? %>
                   <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary"%>
                 <%elsif current_user.speaker!="1"%>
@@ -45,7 +45,7 @@
                 <%end%>
               </div>
               <div style="display:inline-block;vertical-align:top;width:200px;padding:10px;">
-                <h3 style="margin-top:0px;margin-bottom:0px;">Will Speak At:</h3>
+                <h3 style="margin-top:0px;margin-bottom:0px;">Would Speak At:</h3>
                 <%="Elementary School<br>".html_safe if s.elementary%>
                 <%="Middle School<br>".html_safe if s.middle%>
                 <%="High School<br>".html_safe if s.high%>
