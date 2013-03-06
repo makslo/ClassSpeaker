@@ -30,20 +30,38 @@
       		<%if @speakers && @speakers.size>0%>
       		<%@speakers.each do |s|%>
           <%if s.user%>
-	      		<div>
-	      			<table><tr><td>
-	      			<%=image_tag s.user.image%></td><td>
-	      			<b><%=s.user.first_name%> <%=s.user.last_name%></b><br>
-	      			Career: <%=s.career%><br>
-	      			Location: <%=s.location%><br></td><td>
-              <%if !user_signed_in? %>
-              <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary"%></td></tr>
-              <%elsif current_user.speaker!="1"%>
-	      			<%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%></td></tr>
-              <%end%>
-	      		</table>
+	      		<div style="overflow:hidden;">
+	      			<div style="display:inline-block;vertical-align:bottom;padding:10px 10px 15px; 10px;">
+	      			    <%=image_tag s.user.image%>
+              </div>
+	      			<div style="display:inline-block;vertical-align:top;width:350px;margin-left:20px;padding:10px;">
+                   <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
+    	      			Career: <%=s.career%> <span class="muted">(<%=s.years%> yrs)</span><br>
+    	      			Location: <%=s.location%><br>
+                  <%if !user_signed_in? %>
+                  <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary"%>
+                <%elsif current_user.speaker!="1"%>
+                  <%=link_to "View", appointment_url(s), :class=>"btn btn-primary"%>
+                <%end%>
+              </div>
+              <div style="display:inline-block;vertical-align:top;width:200px;padding:10px;">
+                <h3 style="margin-top:0px;margin-bottom:0px;">Grade Level:</h3>
+                <%="Elementary School<br>".html_safe if s.elementary%>
+                <%="Middle School<br>".html_safe if s.middle%>
+                <%="High School<br>".html_safe if s.high%>
+                <%="College & University<br>".html_safe if s.college%>
+              </div>
+              <div style="display:inline-block;vertical-align:top;width:200px;padding:10px;">
+               <h3 style="margin-top:0px;margin-bottom:0px;">Availability</h3>
+               <%="In Person<br>".html_safe if s.in_person%>
+               <%="Via Skype<br>".html_safe if s.skype%>
+              </div>
+              <div style="display:inline-block;vertical-align:top;width:200px;padding:10px;">
+                <h3 style="margin-top:0px;margin-bottom:0px;">Activities</h3>
+                <%=s.bio.truncate(100)%>
+              </div>
 	      		</div>
-            <hr>
+            <hr style="margin:5px;">
             <%end%>
 
             
