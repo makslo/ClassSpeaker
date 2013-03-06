@@ -14,41 +14,46 @@ class SpeakerProfile < ActiveRecord::Base
   end
 
   def self.find_speakers(query)
-    p = %w{career school years location availability}
-    location = query[:location] if query[:location]!="Any"
+    p = %w{school years availability}
+    location = query[:location] if !query[:location].blank?
+    career = query[:career] if !query[:career].blank?
     h = p.collect{|a| [a,query[a.to_sym].to_i]}
     result = []
     if h[0][1] != 0
-      result << where(:career=>CAREERS[h[0][1]-1])
-    end
-    if h[1][1] != 0
-      if h[1][1]==1
+      if h[0][1]==1
       result << where(elementary: true)
-      elsif h[1][1]==2
+      elsif h[0][1]==2
       result << where(middle: true)
-      elsif h[1][1]==3
+      elsif h[0][1]==3
       result << where(high: true)
-      elsif h[1][1]==4
+      elsif h[0][1]==4
       result << where(college: true)
       end
     end
-    if h[2][1] != 0
-      result << where(:years=>h[2][1])
+    if h[1][1] != 0
+      result << where(:years=>h[1][1])
     end
-    if h[4][1] != 0
-      if h[4][1] == 1
+    if h[2][1] != 0
+      if h[2][1] == 1
       result << where(in_person: true)
-      elsif h[4][1] == 2
+      elsif h[2][1] == 2
       result << where(skype: true)
       end
     end
+    if career
+      result << where("career like ?", "%#{career}%")
+    end
     if location
-      result << where(location: location)
+      result << where("location like ?", "%#{location}%")
     end
     search = result.empty? ? all : result.sum
     clean = []
+    speaker = []
     search.each do |s|
-      clean << s if !s.user.nil?
+      if !s.user.nil? && !speaker.include?(s.user_id)
+        clean << s 
+        speaker << s.user_id
+      end
     end
     clean
   end

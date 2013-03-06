@@ -13,12 +13,12 @@
 	<%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Open+Sans:400,300"%>
   <%= stylesheet_link_tag    "base.css"%>
 	<%= stylesheet_link_tag    "blue.css"%>
-    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css" />
+  <%= stylesheet_link_tag    "fontawesome/css/font-awesome.min.css" %>
 	
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "application", :media=>:all %>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
@@ -50,7 +50,7 @@
 
         <%= yield %>
 
-  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"%>
+  <% javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"%>
   <%= javascript_include_tag "template/bootstrap.min.js"%>
 	<%= javascript_include_tag "template/jquery.fitvids.js"%>
 	<%= javascript_include_tag "template/jqBootstrapValidation.js"%>

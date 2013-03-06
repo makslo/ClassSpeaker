@@ -27,3 +27,36 @@
  	margin-right:10px;
  	margin-left:10px;
  }
+
+ .ui-helper-hidden-accessible{
+ 	display: none;
+ }
+
+ a.ui-corner-all{}
+
+ ul.ui-autocomplete{
+ 	position: absolute;
+ 	top:0;
+ 	list-style: none;
+ 	margin: 8px;
+ 	padding: 0;
+ 	border: solid 1px #999;
+ 	cursor: default;
+ }
+
+  li.ui-menu-item{
+  	background-color: #fff;
+  	border-top: 1px solid #ddd;
+  	margin: 0px;
+  	padding: 0px;
+ }
+
+ a.ui-corner-all{
+ 	color: #000;
+ 	display: block;
+ 	padding:3px;
+ }
+
+ a.ui-state-hover, a.ui-state-active{
+ 	color:#FFFCB2;
+ }

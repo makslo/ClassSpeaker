@@ -17,9 +17,9 @@
               <%three = Array.new(10){|a| a+1}.prepend("Any")%>
               <%four = ["Any"]+SpeakerProfile.new.get_locations%>
               <%five = ["Any","In Person", "Via Skype","Both"]%>
-      		<td><%=select_tag :career, options_for_select(one.collect{|s| [s,one.index(s)]}), {:disabled=>true,:class=>"input-medium"}%></td>
+      		<td><%=text_field_tag :career, nil, :placeholder=>"Any", :class=>"input-medium career-search"%></td>
       		<td><%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]}),:class=>"input-medium"%></td>
-          <td><%=select_tag :location, options_for_select(four.collect{|s| [s,s]}),:class=>"input-medium"%></td>
+          <td><%=text_field_tag :location, nil, :placeholder=>"Any", :class=>"input-medium location-search"%></td>
           <td><%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]}),:class=>"input-medium"%></td>
           <%=hidden_field_tag :years, 0%>
       		<td><%=submit_tag "Find Speakers",:class=>"btn btn-primary"%></td>

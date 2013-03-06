@@ -11,5 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
-
+$(document).ready(function(){
+  $('.career-search').autocomplete({
+    source : '/career-search/results'
+  });
+  $('.location-search').autocomplete({
+    source : '/location-search/results'
+  });
+});

@@ -15,6 +15,9 @@ ClassSpeaker::Application.routes.draw do
   match 'book' => 'user#book'
   match 'curriculum/teacher' => 'user#curriculum_tch'
   match 'curriculum/speaker' => 'user#curriculum_sp'
+
+  match 'career-search/results' => 'search#career'
+  match 'location-search/results' => 'search#location'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -60,6 +60,14 @@ ClassSpeaker::Application.configure do
                                   bootstrap.css
                                   bootstrap.min.css
                                   glyphicons.css
+                                  fontawesome/css/font-awesome-ie7.min.css
+                                  fontawesome/css/font-awesome.css
+                                  fontawesome/css/font-awesome.min.css
+                                  fontawesome/font/fontawesome-webfont.eot
+                                  fontawesome/font/fontawesome-webfont.svg
+                                  fontawesome/font/fontawesome-webfont.ttf
+                                  fontawesome/font/fontawesome-webfont.woff
+                                  fontawesome/font/FontAwesome.otf
     )
 
   # Disable delivery errors, bad email addresses will be ignored
