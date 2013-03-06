@@ -41,10 +41,10 @@ class SpeakerProfile < ActiveRecord::Base
       end
     end
     if career
-      result << where("career like ?", "%#{career}%")
+      result << where("career ilike ?", "%#{career}%")
     end
     if location
-      result << where("location like ?", "%#{location}%")
+      result << where("location ilike ?", "%#{location}%")
     end
     search = result.empty? ? all : result.sum
     clean = []
