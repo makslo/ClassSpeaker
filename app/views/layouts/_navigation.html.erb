@@ -12,7 +12,7 @@
 		  	<%if user_signed_in?%>
             <%=link_to "sign out", destroy_user_session_url, :class=>"btn btn-primary pull-right", :method=>:delete%>
             <%if !current_user.provider.nil?%>
-            <%=image_tag current_user.image, :size=>"40x40", :class=>"pull-right nav-pic"%>
+            <%=link_to image_tag(current_user.image, :size=>"40x40"), edit_user_registration_url, :class=>"pull-right nav-pic"%>
             <%end%>
         <%else%>
 
