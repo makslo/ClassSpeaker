@@ -13,7 +13,7 @@
             </tr>
             <tr>
               <%one = ["Any"]+SpeakerProfile.new.get_careers%>
-              <%two = ["Any","Elementary School", "Middle School", "High School", "College"]%>
+              <%two = ["Any","Elementary School", "Middle School", "High School", "College & University"]%>
               <%three = Array.new(10){|a| a+1}.prepend("Any")%>
               <%four = ["Any"]+SpeakerProfile.new.get_locations%>
               <%five = ["Any","In Person", "Via Skype","Both"]%>
@@ -81,12 +81,10 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Schedule a Speaker in 3 Easy Steps:</h3>
+    <h3 id="myModalLabel">How It Works</h3>
   </div>
   <div class="modal-body">
-    <h3>1. Browse our speakers</h3>
-    <h3>2. Sign up or log in to go to the speakers page</h3>
-    <h3>3. Connect via Email</h3>
+    <h3>How it works / Simply browse professional speakers in your area, and click on any that you would like to invite to your class (or via Skype).</h3>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Dismiss</button>
