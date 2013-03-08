@@ -62,6 +62,26 @@ class SpeakerProfile < ActiveRecord::Base
     #  end
     #end
     #clean
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+    profile << profile[0]
+
+    profile << profile[0]
+    profile << profile[0]
     profile
   end
 

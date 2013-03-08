@@ -37,9 +37,15 @@ class UserController < ApplicationController
 	def search
 		
 	end
+
 	def connect
 		@speaker = SpeakerProfile.find(params[:id]).user
 	end
+
+	def connect_beta
+		@speaker = SpeakerProfile.find(params[:id]).user
+	end
+	
 	def book
 		user_to = User.find(params[:to_id])
 		user_from = User.find(params[:from_id])

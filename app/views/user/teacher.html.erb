@@ -33,6 +33,7 @@
       		<%end%>
 
       		<%if @speakers && @speakers.size>0%>
+          <%= will_paginate @speakers %>
       		<%@speakers.each do |s|%>
           <%if s.user%>
 	      		<div class="row">
@@ -58,7 +59,7 @@
     	      			<%=s.location%><br><br><br>
               </div>
               <div class="span2">
-                  <h3 style="margin-top:0px;margin-bottom:0px;">Speaker at:</h3>
+                  <h3 style="margin-top:0px;margin-bottom:0px;">Speaking at:</h3>
                   <%="Elementary School<br>".html_safe if s.elementary%>
                   <%="Middle School<br>".html_safe if s.middle%>
                   <%="High School<br>".html_safe if s.high%>
@@ -79,7 +80,28 @@
       		<%end%>
           <%= will_paginate @speakers %>
       		<%end%>
+          <script>
+          $(document).ready(function(){
+            var first = $(".pagination").first();
+            var last = $(".pagination").last();
 
+            first.find('.current').wrap('<a class="active" href="#">')
+            var tmp_text = first.find('.current').text();
+            first.find('em').remove();
+            first.find('.active').text(tmp_text);
+            first.find('a,span').wrapAll('<ul>');
+            first.find('a,span').wrap('<li>')
+            first.find('.active').parent().addClass('active');
+
+            last.find('.current').wrap('<a class="active" href="#">')
+            var tmp_text = last.find('.current').text();
+            last.find('em').remove();
+            last.find('.active').text(tmp_text);
+            last.find('a,span').wrapAll('<ul>');
+            last.find('a,span').wrap('<li>')
+            last.find('.active').parent().addClass('active');
+          });
+          </script>
       	</div>
       </div>
     </div>
