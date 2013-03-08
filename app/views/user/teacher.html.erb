@@ -36,26 +36,26 @@
       		<%@speakers.each do |s|%>
           <%if s.user%>
 	      		<div class="row">
-              <div class="span4">
+              <div class="span1">
+                <div class="row">
+                  <div class="span1">
+                    <%if !user_signed_in? %>
+                      <%=link_to "View", new_user_registration_url, :class=>"btn btn-block btn-primary btn-mini"%>
+                    <%elsif current_user.speaker!="1"%>
+                      <%=link_to "View", connect_url(s), :class=>"btn btn-block btn-primary btn-mini"%>
+                    <%end%>
+                  </div>
+                </div>
                 <div class="row">
     	      			<div class="span1" style="padding-top:10px;">
     	      			    <%=image_tag s.user.image%>
                   </div>
-    	      			<div class="span3">
-                      <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
-        	      			<%=s.career%> <span class="muted">(<%=s.years%> yrs)</span> <br>
-        	      			<%=s.location%><br><br><br>
-                  </div>
                 </div>
-                <div class="row">
-                  <div class="span1" style="padding-top:5px;">
-                    <%if !user_signed_in? %>
-                  <%=link_to "View", new_user_registration_url, :class=>"btn btn-block btn-primary btn-mini"%>
-                <%elsif current_user.speaker!="1"%>
-                  <%=link_to "View", connect_url(s), :class=>"btn btn-block btn-primary btn-mini"%>
-                <%end%>
-                  </div>
-                </div>
+              </div>
+	      			<div class="span3">
+                  <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
+    	      			<%=s.career%> <span class="muted">(<%=s.years%> yrs)</span> <br>
+    	      			<%=s.location%><br><br><br>
               </div>
               <div class="span2">
                   <h3 style="margin-top:0px;margin-bottom:0px;">Speaker at:</h3>
