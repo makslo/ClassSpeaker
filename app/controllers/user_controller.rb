@@ -15,11 +15,11 @@ class UserController < ApplicationController
 	end
 
 	def speaker
-		u = current_user
-		if u.speaker_profile.nil?
-			@profile = u.build_speaker_profile
+		@user = current_user
+		if @user.speaker_profile.nil?
+			@profile = @user.build_speaker_profile
 		else
-			@profile = u.speaker_profile
+			@profile = @user.speaker_profile
 		end
 	end
 
@@ -37,7 +37,7 @@ class UserController < ApplicationController
 	def search
 		
 	end
-	def appointment
+	def connect
 		@speaker = SpeakerProfile.find(params[:id]).user
 	end
 	def book

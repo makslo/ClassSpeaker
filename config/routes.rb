@@ -11,7 +11,7 @@ ClassSpeaker::Application.routes.draw do
 
   match 'speaker/profiles' => 'user#create_profile'
   match 'speaker/search' => "user#search"
-  match 'appointment/:id' => 'user#appointment', :as=>:appointment
+  match 'connect/:id' => 'user#connect', :as=>:connect
   match 'book' => 'user#book'
   match 'curriculum/teacher' => 'user#curriculum_tch'
   match 'curriculum/speaker' => 'user#curriculum_sp'

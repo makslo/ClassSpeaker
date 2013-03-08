@@ -14,7 +14,7 @@ class SpeakerProfile < ActiveRecord::Base
   end
 
   def self.find_speakers(query)
-    p = %w{school years availability}
+    p = %w{school availability}
     location = query[:location] if !query[:location].blank?
     career = query[:career] if !query[:career].blank?
     h = p.collect{|a| [a,query[a.to_sym].to_i]}
@@ -41,15 +41,11 @@ class SpeakerProfile < ActiveRecord::Base
       profile.delete(nil)
     end
     if h[1][1] != 0
-      profile = profile.map{|a| a if a.years==h[1][1]}
-      profile.delete(nil)
-    end
-    if h[2][1] != 0
-      if h[2][1] == 1
+      if h[1][1] == 1
         profile = profile.map{|a| a if a.in_person}
-      elsif h[2][1] == 2
+      elsif h[1][1] == 2
         profile = profile.map{|a| a if a.skype}
-      elsif h[2][1] == 3
+      elsif h[1][1] == 3
         profile = profile.map{|a| a if a.in_person && a.skype}
       end
       profile.delete(nil)
