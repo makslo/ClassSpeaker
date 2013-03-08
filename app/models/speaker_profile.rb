@@ -20,11 +20,11 @@ class SpeakerProfile < ActiveRecord::Base
     h = p.collect{|a| [a,query[a.to_sym].to_i]}
     result = []
     if career && location
-      profile = where("career like ? AND location like ?", "%#{career}%", "%#{location}%")
+      profile = where("career ilike ? AND location ilike ?", "%#{career}%", "%#{location}%")
     elsif location
-      profile = where("location like ?", "%#{location}%")
+      profile = where("location ilike ?", "%#{location}%")
     elsif career
-      profile = where("career like ?", "%#{career}%")
+      profile = where("career ilike ?", "%#{career}%")
     else
       profile = all
     end
