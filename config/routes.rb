@@ -18,6 +18,8 @@ ClassSpeaker::Application.routes.draw do
 
   match 'career-search/results' => 'search#career'
   match 'location-search/results' => 'search#location'
+
+  match 'connect-beta/:id' => 'user#connect', :as=>:connect_beta
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
