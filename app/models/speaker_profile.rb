@@ -19,43 +19,60 @@ class SpeakerProfile < ActiveRecord::Base
     career = query[:career] if !query[:career].blank?
     h = p.collect{|a| [a,query[a.to_sym].to_i]}
     result = []
+    if career && location
+      profile = where("career like ? AND location like ?", "%#{career}%", "%#{location}%")
+    elsif location
+      profile = where("location like ?", "%#{location}%")
+    elsif career
+      profile = where("career like ?", "%#{career}%")
+    else
+      profile = all
+    end
     if h[0][1] != 0
       if h[0][1]==1
-      result << where(elementary: true)
+        profile = profile.map{|a| a if a.elementary}
       elsif h[0][1]==2
-      result << where(middle: true)
+        profile = profile.map{|a| a if a.middle}
       elsif h[0][1]==3
-      result << where(high: true)
+        profile = profile.map{|a| a if a.high}
       elsif h[0][1]==4
-      result << where(college: true)
+        profile = profile.map{|a| a if a.college}
       end
+      profile.delete(nil)
     end
     if h[1][1] != 0
-      result << where(:years=>h[1][1])
+      profile = profile.map{|a| a if a.years==h[1][1]}
+      profile.delete(nil)
     end
     if h[2][1] != 0
       if h[2][1] == 1
-      result << where(in_person: true)
+        profile = profile.map{|a| a if a.in_person}
       elsif h[2][1] == 2
-      result << where(skype: true)
+        profile = profile.map{|a| a if a.skype}
+      elsif h[2][1] == 3
+        profile = profile.map{|a| a if a.in_person && a.skype}
       end
+      profile.delete(nil)
     end
-    if career
-      result << where("career ilike ?", "%#{career}%")
+    #search = result.empty? ? all : result.sum
+    #clean = []
+    #speaker = []
+    #if !result.empty?
+    #  search.each do |s|
+    #    if !s.user.nil? && !speaker.include?(s.user_id)
+    #      clean << s 
+    #      speaker << s.user_id
+    #    end
+    #  end
+    #end
+    #clean
+    profile
+  end
+
+  def self.remove_old
+    all.each do |a|
+      a.delete if a.user.nil?
     end
-    if location
-      result << where("location ilike ?", "%#{location}%")
-    end
-    search = result.empty? ? all : result.sum
-    clean = []
-    speaker = []
-    search.each do |s|
-      if !s.user.nil? && !speaker.include?(s.user_id)
-        clean << s 
-        speaker << s.user_id
-      end
-    end
-    clean
   end
 
   def get_locations

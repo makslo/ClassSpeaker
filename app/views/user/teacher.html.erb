@@ -17,10 +17,10 @@
               <%three = Array.new(10){|a| a+1}.prepend("Any")%>
               <%four = ["Any"]+SpeakerProfile.new.get_locations%>
               <%five = ["Any","In Person", "Via Skype","Both"]%>
-      		<td><%=text_field_tag :career, nil, :placeholder=>"Any", :class=>"input-medium career-search"%></td>
-      		<td><%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]}),:class=>"input-medium"%></td>
-          <td><%=text_field_tag :location, nil, :placeholder=>"Any", :class=>"input-medium location-search"%></td>
-          <td><%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]}),:class=>"input-medium"%></td>
+      		<td><%=text_field_tag :career, params[:career], :placeholder=>"Any", :class=>"input-medium career-search"%></td>
+      		<td><%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]},params[:school]),:class=>"input-medium"%></td>
+          <td><%=text_field_tag :location, params[:location], :placeholder=>"Any", :class=>"input-medium location-search"%></td>
+          <td><%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]},params[:availability]),:class=>"input-medium"%></td>
           <%=hidden_field_tag :years, 0%>
       		<td><%=submit_tag "Find Speakers",:class=>"btn btn-primary"%></td>
         </tr>
@@ -45,7 +45,7 @@
                 <%end%>
               </div>
               <div style="display:inline-block;vertical-align:top;width:200px;padding:10px;">
-                <h3 style="margin-top:0px;margin-bottom:0px;">Would Speak At:</h3>
+                <h3 style="margin-top:0px;margin-bottom:0px;">Can Speak At:</h3>
                 <%="Elementary School<br>".html_safe if s.elementary%>
                 <%="Middle School<br>".html_safe if s.middle%>
                 <%="High School<br>".html_safe if s.high%>
@@ -73,3 +73,30 @@
       </div>
     </div>
   </div>
+
+  <!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn teacher-steps" data-toggle="modal" style="display:none;">Launch demo modal</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Schedule a Speaker in 3 Easy Steps:</h3>
+  </div>
+  <div class="modal-body">
+    <h3>1. Browse our speakers</h3>
+    <h3>2. Sign up or log in to go to the speakers page</h3>
+    <h3>3. Connect via Email</h3>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Dismiss</button>
+  </div>
+</div>
+<% if !user_signed_in? && session[:new_teacher].nil?%>
+<%session[:new_teacher]=false%>
+<script>
+$(document).ready(function(){
+  $('.teacher-steps').click();
+});
+</script>
+<%end%>

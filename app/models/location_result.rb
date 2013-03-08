@@ -7,6 +7,7 @@ class LocationResult < ActiveRecord::Base
   end
 
   def self.index_careers
+    delete_all
   	SpeakerProfile.find_each do |profile|
   		index_term(profile.location)
   		profile.location.split.each{|l| index_term(l)}

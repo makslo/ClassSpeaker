@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes, :provider, :uid, :last_name, :first_name
   # attr_accessible :title, :body
-  validates_confirmation_of :password
-  has_one :speaker_profile
+  validates :first_name, :last_name, :presence=>true
+  has_one :speaker_profile, :dependent => :delete
   accepts_nested_attributes_for :speaker_profile, allow_destroy: true
 
 	def self.from_omniauth(auth)

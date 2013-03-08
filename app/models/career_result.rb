@@ -7,6 +7,7 @@ class CareerResult < ActiveRecord::Base
   end
 
   def self.index_careers
+    delete_all
   	SpeakerProfile.find_each do |profile|
   		index_term(profile.career)
   		profile.career.split.each{|c| index_term(c)}
