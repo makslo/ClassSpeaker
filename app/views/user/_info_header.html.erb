@@ -1,0 +1,24 @@
+<%profile = speaker.speaker_profile%>
+
+      <div class="page-header" style="margin-bottom:0px;">
+			  <h1>
+          <div class="row">
+            <%if speaker.id!=current_user.id%>
+            <div class="span1" style="padding-top:20px;">
+                  <%=image_tag speaker.image%>
+            </div>
+            <%end%>
+            <div class="span11">
+              <h1>
+              <%=speaker.first_name%> <%=speaker.last_name%><small>, <%=profile.location%>
+              <%if speaker.id==current_user.id%>
+              <%=link_to "edit profile", edit_profile_url, :class=>"btn pull-right"%>
+              <%end%>
+            </small><br>
+              <%if speaker.id!=current_user.id%>
+                  <a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Schedule an Engagement</a>
+              <%end%>
+              </h1>
+            </div>
+        </div>
+			</div>

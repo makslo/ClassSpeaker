@@ -63,6 +63,8 @@ class SpeakerProfile < ActiveRecord::Base
     #end
     #clean
 
+    #profile <<profile[0]
+  
     profile
   end
 
