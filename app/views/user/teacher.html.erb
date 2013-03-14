@@ -1,84 +1,121 @@
   <div id="content" class="">
-    <div class="container">
-      <div class="row">
-      	<div class="span12">
-      		<%=form_tag teacher_url, :class=>"form-horizontal" do%>
-            <%one = ["Any"]+SpeakerProfile.new.get_careers%>
-            <%two = ["Any","Elementary School", "Middle School", "High School", "College & University"]%>
-            <%three = Array.new(10){|a| a+1}.prepend("Any")%>
-            <%four = ["Any"]+SpeakerProfile.new.get_locations%>
-            <%five = ["Any","In Person", "Via Skype","Both"]%>
-          <div class="row">
-            <div class="span2">
-              Profession<br><br>
-              <%=text_field_tag :career, params[:career], :placeholder=>"Any", :class=>"input-medium career-search"%>
+
+        <div id="landing" style="margin-top: -30px;">
+          <div class="container">
+            <div class="row">
+              <div class="span10">
+                <h1>Find your speaker</h1>
+                <p>Use the filters below to identify the right person to speak with your class or organization. Speaking engagements are generally conducted over Google Hangout, unless the parties decide otherwise.</p>
+              </div>
             </div>
-          <div class="span2">
-              Location<br><br>
-              <%=text_field_tag :location, params[:location], :placeholder=>"Any", :class=>"input-medium location-search"%>
-          </div>
-            <div class="span2">
-              Level<br><br>
-              <%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]},params[:school]),:class=>"input-medium"%>
-            </div>
-          <div class="span2">
-            Availability<br><br>
-            <%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]},params[:availability]),:class=>"input-medium"%>
-          </div>
-          <div class="span2">
-            <br><br>
-          <%=submit_tag "Find Speakers",:class=>"btn btn-primary"%>
           </div>
         </div>
-      		<%end%>
 
-      		<%if @speakers && @speakers.size>0%>
-      		<%@speakers.each do |s|%>
-          <%if s.user%>
-	      		<div class="row">
+    <div class="container">
+
+      <div class="row">
+
+      	<div class="span12">
+
+        		<div id="content">
+
+                <%=form_tag teacher_url, :class=>"form-horizontal" do%>
+                  <%one = ["Any"]+SpeakerProfile.new.get_careers%>
+                  <%two = ["Any","Elementary School", "Middle School", "High School", "College & University"]%>
+                  <%three = Array.new(10){|a| a+1}.prepend("Any")%>
+                  <%four = ["Any"]+SpeakerProfile.new.get_locations%>
+                  <%five = ["Any","In Person", "Via Skype","Both"]%>
+               
+               <!--Filter Boxes-->
+                <div class="row">
+                 
+                      <div class="span2">
+                        Profession<br><br>
+                        <%=text_field_tag :career, params[:career], :placeholder=>"Any", :class=>"input-medium career-search"%>
+                      </div>
+
+                      <div class="span2">
+                          Location<br><br>
+                          <%=text_field_tag :location, params[:location], :placeholder=>"Any", :class=>"input-medium location-search"%>
+                      </div>
+
+                      <div class="span2">
+                        Level<br><br>
+                        <%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]},params[:school]),:class=>"input-medium"%>
+                      </div>
+
+                      <div class="span2">
+                        Availability<br><br>
+                        <%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]},params[:availability]),:class=>"input-medium"%>
+                      </div>
+
+                      <div class="span2">
+                        <br><br>
+                      <%=submit_tag "Find Speakers",:class=>"btn btn-primary"%>
+                      </div>
+
+                </div>
+
+        		<%end%>
+
+          		<%if @speakers && @speakers.size>0%>
+          		<%@speakers.each do |s|%>
+              <%if s.user%>
+  	      		
+              <!--Filtered speakersummaries-->
+              <div class="row">
+                
+      	      			<div class="span1" style="padding-top:10px;">
+      	      			    <%=image_tag s.user.image%>
+                    </div>
+
+      	      			<div class="span3">
+                        <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
+          	      			<%=s.career%> <span class="muted">(<%=s.years%> yrs)</span>
+                        <%if !user_signed_in? %>
+                        <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary btn-mini"%>
+                      <%elsif current_user.speaker!="1"%>
+                        <%=link_to "View", connect_url(s), :class=>"btn btn-primary btn-mini"%>
+                      <%end%>
+                        <br>
+          	      			<%=s.location%><br>
+          
+                    </div>
+
+                    <div class="span2">
+                      <h3 style="margin-top:0px;margin-bottom:0px;">Speaker at:</h3>
+                      <%="Elementary School<br>".html_safe if s.elementary%>
+                      <%="Middle School<br>".html_safe if s.middle%>
+                      <%="High School<br>".html_safe if s.high%>
+                      <%="College & University<br>".html_safe if s.college%>
+                    </div>
+
+                    <div class="span2">
+                     <h3 style="margin-top:0px;margin-bottom:0px;">Availability</h3>
+                     <%="In Person<br>".html_safe if s.in_person%>
+                     <%="Via Skype<br>".html_safe if s.skype%>
+                    </div>
+
+                   <div class="span2">
+                      <h3 style="margin-top:0px;margin-bottom:0px;">Activities</h3>
+                      <%=s.bio.truncate(60)%>
+                    </div>
+
+  	      		</div>
               
-	      			<div class="span1" style="padding-top:10px;">
-	      			    <%=image_tag s.user.image%>
-              </div>
-	      			<div class="span3">
-                  <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
-    	      			<%=s.career%> <span class="muted">(<%=s.years%> yrs)</span>
-                  <%if !user_signed_in? %>
-                  <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary btn-mini"%>
-                <%elsif current_user.speaker!="1"%>
-                  <%=link_to "View", connect_url(s), :class=>"btn btn-primary btn-mini"%>
-                <%end%>
-                  <br>
-    	      			<%=s.location%><br>
-    
-              </div>
-             <div class="span2">
-                <h3 style="margin-top:0px;margin-bottom:0px;">Speaker at:</h3>
-                <%="Elementary School<br>".html_safe if s.elementary%>
-                <%="Middle School<br>".html_safe if s.middle%>
-                <%="High School<br>".html_safe if s.high%>
-                <%="College & University<br>".html_safe if s.college%>
-              </div>
-              <div class="span2">
-               <h3 style="margin-top:0px;margin-bottom:0px;">Availability</h3>
-               <%="In Person<br>".html_safe if s.in_person%>
-               <%="Via Skype<br>".html_safe if s.skype%>
-              </div>
-             <div class="span2">
-                <h3 style="margin-top:0px;margin-bottom:0px;">Activities</h3>
-                <%=s.bio.truncate(60)%>
-              </div>
-	      		</div>
-            <hr style="margin:5px;">
-            <%end%>
-      		<%end%>
-          <%= will_paginate @speakers %>
-      		<%end%>
+              <hr style="margin:5px;">
+              <%end%>
+        		<%end%>
+            <%= will_paginate @speakers %>
+        		<%end%>
+
+          </div>
 
       	</div>
+      
       </div>
-    </div>
   </div>
+</div>
 
   <!-- Button to trigger modal -->
 <a href="#myModal" role="button" class="btn teacher-steps" data-toggle="modal" style="display:none;">Launch demo modal</a>
@@ -87,10 +124,10 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">How It Works</h3>
+    <h3 id="myModalLabel">Welcome!</h3>
   </div>
   <div class="modal-body">
-    <h4>Simply browse professional speakers in your area, and click on any that you would like to invite to your class (or via Skype).</h4>
+    <h4>You're about to enter a growing world of brilliant professionals who are eager to share their real-life lessons with your class. Good luck connecting!</h4>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Dismiss</button>
