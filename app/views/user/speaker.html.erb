@@ -1,8 +1,8 @@
-  <div id="content" class="">
+    <div id="content" class="">
     <div class="container">
       <div class="row">
       	<div class="span12">
-      		<%if @profile.new_record?%>
+      		<%if current_user.new_user%>
       			<h2>Welcome,</h2>
       			<p>Please answer some questions to help teachers find you</p>
       			<%=render 'user/profile_form'%>

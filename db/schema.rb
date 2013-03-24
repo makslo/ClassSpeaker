@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306033637) do
+ActiveRecord::Schema.define(:version => 20130321232048) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "count"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(:version => 20130306033637) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",  :null => false
-    t.string   "encrypted_password",     :default => "",  :null => false
-    t.string   "speaker",                :default => "0", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "speaker",                :default => "0",   :null => false
     t.string   "image"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -71,12 +71,26 @@ ActiveRecord::Schema.define(:version => 20130306033637) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "provider"
     t.string   "uid"
     t.string   "first_name"
     t.string   "last_name"
+    t.text     "bio"
+    t.string   "industry"
+    t.string   "location"
+    t.string   "skills"
+    t.text     "speak_about"
+    t.integer  "years",                  :default => 0
+    t.boolean  "elimentary",             :default => false
+    t.boolean  "middle",                 :default => false
+    t.boolean  "high",                   :default => false
+    t.boolean  "college",                :default => false
+    t.boolean  "new_user",               :default => true
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,6 +1,6 @@
 ClassSpeaker::Application.routes.draw do
 
-    devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to=>"welcome#index"
 
@@ -8,6 +8,7 @@ ClassSpeaker::Application.routes.draw do
   match 'update/profile/:id' => 'user#update', :as=>:update_profile
   match 'teacher' => 'user#teacher'
   match 'speaker' => 'user#speaker'
+  match 'register'=> 'user#register_speaker', :as=>:register_speaker
 
   match 'speaker/profiles' => 'user#create_profile'
   match 'speaker/search' => "user#search"
@@ -18,8 +19,6 @@ ClassSpeaker::Application.routes.draw do
 
   match 'career-search/results' => 'search#career'
   match 'location-search/results' => 'search#location'
-
-  match 'connect-beta/:id' => 'user#connect_beta', :as=>:connect_beta
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

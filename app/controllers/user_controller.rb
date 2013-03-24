@@ -1,12 +1,19 @@
 class UserController < ApplicationController
 	def profile
-		u = current_user
+		@u = current_user
 		@profile = u.speaker_profile
 	end
 
 	def update
 		s = current_user.speaker_profile
 		s.update_attributes(params[:speaker_profile])
+		redirect_to speaker_url
+	end
+
+	def register_speaker
+		if params[:confirm_registration]
+			current_user.update_attributes(params[:user])
+		end
 		redirect_to speaker_url
 	end
 

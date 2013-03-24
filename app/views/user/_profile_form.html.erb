@@ -1,6 +1,7 @@
-<%=form_for @profile, :html=>{:class=>"form-horizontal"} do |b|%>
+<%=form_for current_user, :url=>register_speaker_url, :html=>{:class=>"form-horizontal"} do |b|%>
 
 <%if @profile.errors.messages.any?%>
+<!-- TODO Fix validation error display -->
 <%@profile.errors.messages.each do |k,v|%>
 <div style="color:red;">
 <%=k%>: <%=v[0]%>
@@ -8,46 +9,56 @@
 <%end%>
 <%end%>
 		<div class="control-group">
-		<%= b.label :career, "My primary career role", :class=>"control-label" %>
+		<%= b.label :first_name, "Your Name", :class=>"control-label" %>
 		  	<div class="controls">
-		   <%= b.text_field :career, :placeholder=>"Role..." %></div>
+		   <%= b.text_field :first_name, :placeholder=>"first name...", :class=>"input-small"%> <%= b.text_field :last_name, :placeholder=>"last name...", :class=>"input-small"%></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :bio, "Bio", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_area :bio, :placeholder=>"bio...", :rows=>3 %></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :email, "Your Name", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.email_field :email, :placeholder=>"first name..."%></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :industry, "Industry", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_field :industry, :placeholder=>"industry..."%></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :address, "Location", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_field :address, :placeholder=>"location..."%></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :skills, "Skills", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_field :skills, :placeholder=>"skills..."%></div>
+		</div>
+		<div class="control-group">
+		<%= b.label :elimentary, "I'd like to speak at", :class=>"control-label" %>
+		  	<div class="controls">
+		  		<table>
+				  <tr><td>Elementary School</td><td><%= b.check_box :elimentary%></td><td>Middle School</td><td><%= b.check_box :middle%></td></tr>
+				  <tr><td>High School</td><td><%= b.check_box :high%></td><td>College & University</td><td><%= b.check_box :college%></td></tr>
+				</table>
+		</div>
+		</div>
+		<div class="control-group">
+		<%= b.label :speak_about, "I'd like to speak about", :class=>"control-label" %>
+		  	<div class="controls">
+		   <%= b.text_area :speak_about, :placeholder=>"topics...", :rows=>3%></div>
 		</div>
 		<div class="control-group">
 		<%= b.label :years, "Years of experience", :class=>"control-label" %>
 		  	<div class="controls">
-		   <%= b.text_field :years, :placeholder=>"Years of experience..." %></div>
-		</div>
-		<div class="control-group">
-		<%= b.label :location, "My location", :class=>"control-label" %>
-		  	<div class="controls">
-		   <%= b.text_field :location, :placeholder=>"Location..." %></div>
-		</div>
-		<div class="control-group">
-		<%= b.label :bio, "What are your main activities on the job:", :class=>"control-label" %>
-		  	<div class="controls">
-		   <%= b.text_area :bio, :rows=>'3' %></div>
-		</div>
-		<div class="control-group">
-		<%= b.label :elementary, "I would like to speak to:", :class=>"control-label" %>
-		  	<div class="controls">
-		  		<table>
-		  			<tr><td><%= b.check_box :elementary %></td><td style="padding-top:5px;">Elementary School</td>
-	  				<td><%= b.check_box :middle %></td><td style="padding-top:5px;">Middle School</td></tr>
-	  				<tr><td><%= b.check_box :high %></td><td style="padding-top:5px;">High School</td>
-	  				<td><%= b.check_box :college %></td><td style="padding-top:5px;">College & University</td></tr>
-		  		</table>
-			</div>
-		</div>
-		<div class="control-group">
-		<%= b.label :in_person, "I’d prefer speaking:", :class=>"control-label" %>
-		  	<div class="controls">
-		  		<table>
-		  			<tr><td><%= b.check_box :in_person %></td><td style="padding-top:5px;">In person</td>
-	  				<td><%= b.check_box :skype %></td><td style="padding-top:5px;">Via Skype</td></tr>
-		  		</table>
-			</div>
+		   <%= b.text_field :years, :placeholder=>"years..."%></div>
 		</div>
 		  	<div class="controls">
+		  		<%= hidden_field_tag :confirm_registration, true%>
 		  		<%= b.submit nil, :class=>"btn btn-large btn-primary" %>
 			</div>
 		</div>

@@ -7,11 +7,22 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:linkedin]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes, :provider, :uid, :last_name, :first_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes,
+                  :provider, :uid, :last_name, :first_name, :bio, :bio, :industry, :location, :skills, :speak_about,
+                  :elimentary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address
   # attr_accessible :title, :body
   validates :first_name, :last_name, :presence=>true
   has_one :speaker_profile, :dependent => :delete
   accepts_nested_attributes_for :speaker_profile, allow_destroy: true
+
+  	geocoded_by :location
+	reverse_geocoded_by :latitude, :longitude do |obj,results|
+		if geo = results.first
+			obj.address    = geo.city+", "+geo.state_code
+		end
+	end
+
+  after_validation :geocode, :reverse_geocode
 
 	def self.from_omniauth(auth)
 	  where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -22,6 +33,9 @@ class User < ActiveRecord::Base
 	    user.last_name = auth.info.last_name
 	    user.email = auth.info.email
 	    user.image = auth.info.image
+	    user.bio = auth.info.description
+	    user.industry = auth.info.industry
+	    user.location = auth.info.location
 	  end
     end
 
