@@ -77,13 +77,14 @@ ActiveRecord::Schema.define(:version => 20130321232048) do
     t.string   "uid"
     t.string   "first_name"
     t.string   "last_name"
+    t.boolean  "elimentary",             :default => false
     t.text     "bio"
     t.string   "industry"
     t.string   "location"
     t.string   "skills"
     t.text     "speak_about"
     t.integer  "years",                  :default => 0
-    t.boolean  "elimentary",             :default => false
+    t.boolean  "elementary",             :default => false
     t.boolean  "middle",                 :default => false
     t.boolean  "high",                   :default => false
     t.boolean  "college",                :default => false
@@ -91,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20130321232048) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.boolean  "in_person",              :default => false
+    t.boolean  "skype",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

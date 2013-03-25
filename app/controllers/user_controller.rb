@@ -18,7 +18,7 @@ class UserController < ApplicationController
 	end
 
 	def teacher
-		@speakers = SpeakerProfile.find_speakers(params).paginate(:page => params[:page], :per_page => 5)
+		@speakers = User.find_speakers(params).paginate(:page => params[:page], :per_page => 5)
 	end
 
 	def speaker

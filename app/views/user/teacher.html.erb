@@ -28,10 +28,12 @@
                
                <!--Filter Boxes-->
                 <div class="row">
-                 
-                      <div class="span2">
-                        Profession<br><br>
-                        <%=text_field_tag :career, params[:career], :placeholder=>"Any", :class=>"input-medium career-search"%>
+
+                    <div class="span2">
+                          <div class="search-tip"></div>
+                          Search <a href="#" toggle="tooltip" data-title="first tooltip" container=".search-tip"><span style="border-radius:20px;padding-right:6px;padding-left:6px;border:1px solid #dddddd;"> ?</span></a>
+                          <br><br>
+                          <%=text_field_tag :query, params[:query], :placeholder=>"Keywords...", :class=>"input-medium location-search"%> 
                       </div>
 
                       <div class="span2">
@@ -40,13 +42,8 @@
                       </div>
 
                       <div class="span2">
-                        Level<br><br>
+                        Want to speak at<br><br>
                         <%=select_tag :school, options_for_select(two.collect{|s| [s,two.index(s)]},params[:school]),:class=>"input-medium"%>
-                      </div>
-
-                      <div class="span2">
-                        Availability<br><br>
-                        <%=select_tag :availability, options_for_select(five.collect{|s| [s,five.index(s)]},params[:availability]),:class=>"input-medium"%>
                       </div>
 
                       <div class="span2">
@@ -60,25 +57,24 @@
 
               <%if @speakers && @speakers.size>0%>
               <%@speakers.each do |s|%>
-              <%if s.user%>
               
               <!--Filtered speakersummaries-->
               <div class="row">
                 
                     <div class="span1" style="padding-top:10px;">
-                        <%=image_tag s.user.image%>
+                        <%=image_tag s.image%>
                     </div>
 
                     <div class="span3">
-                        <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.user.first_name%> <%=s.user.last_name%></h3>
-                        <%=s.career%> <span class="muted">(<%=s.years%> yrs)</span>
+                        <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.first_name%> <%=s.last_name%></h3>
+                        <%=s.industry%> <span class="muted">(<%=s.years%> yrs)</span>
                         <%if !user_signed_in? %>
                         <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary btn-mini"%>
                       <%elsif current_user.speaker!="1"%>
                         <%=link_to "View", connect_url(s), :class=>"btn btn-primary btn-mini"%>
                       <%end%>
                         <br>
-                        <%=s.location%><br>
+                        <%=s.address%><br>
           
                     </div>
 
@@ -104,7 +100,6 @@
               </div>
               
               <hr style="margin:5px;">
-              <%end%>
             <%end%>
             <%= will_paginate @speakers %>
             <%end%>

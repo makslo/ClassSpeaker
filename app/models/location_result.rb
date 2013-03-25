@@ -6,11 +6,10 @@ class LocationResult < ActiveRecord::Base
 	  	suggestions.order("popularity desc").limit(10).pluck(:term)
   end
 
-  def self.index_careers
+  def self.index_locations
     delete_all
-  	SpeakerProfile.find_each do |profile|
-  		index_term(profile.location)
-  		profile.location.split.each{|l| index_term(l)}
+  	User.find_each do |profile|
+  		index_term(profile.address)
   	end
   end
 

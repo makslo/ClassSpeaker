@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes,
                   :provider, :uid, :last_name, :first_name, :bio, :bio, :industry, :location, :skills, :speak_about,
-                  :elimentary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address
+                  :elementary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address
   # attr_accessible :title, :body
   validates :first_name, :last_name, :presence=>true
   has_one :speaker_profile, :dependent => :delete
@@ -65,5 +65,18 @@ class User < ActiveRecord::Base
 	  else
 	    super
 	  end
+	end
+
+	def self.find_speakers(query)
+		puts "******"+query[:query]+"******" if query[:query]
+		results = []
+		#if query[:location]
+		#	results = near(query[:location], 20)
+		#end
+		if query[:query] && !query[:query].blank?
+			results = where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
+			puts "******"+results.size.to_s+"******"
+		end
+		results
 	end
 end
