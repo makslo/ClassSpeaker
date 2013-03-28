@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes,
-                  :provider, :uid, :last_name, :first_name, :bio, :bio, :industry, :location, :skills, :speak_about,
+                  :provider, :uid, :last_name, :first_name, :bio, :industry, :location, :skills, :speak_about,
                   :elementary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address
   # attr_accessible :title, :body
   validates :first_name, :last_name, :presence=>true
@@ -68,15 +68,25 @@ class User < ActiveRecord::Base
 	end
 
 	def self.find_speakers(query)
-		puts "******"+query[:query]+"******" if query[:query]
 		results = []
-		#if query[:location]
-		#	results = near(query[:location], 20)
-		#end
-		if query[:query] && !query[:query].blank?
-			results = where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
-			puts "******"+results.size.to_s+"******"
+		clean = []
+		usrs = []
+		if query[:location] && !query[:location].blank?
+			results += near(query[:location], 20)
 		end
-		results
+		if query[:query] && !query[:query].blank?
+			results += where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
+		end
+		if results.empty?
+			clean = all
+		else
+			results.each do |u| 
+				if !usrs.include?(u.id)
+				  clean << u
+				  usrs  << u.id
+				end
+			end
+		end
+		clean
 	end
 end

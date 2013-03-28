@@ -61,40 +61,32 @@
               <!--Filtered speakersummaries-->
               <div class="row">
                 
-                    <div class="span1" style="padding-top:10px;">
+                    <div class="span1" style="padding-top:15px;">
                         <%=image_tag s.image%>
                     </div>
 
-                    <div class="span3">
-                        <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.first_name%> <%=s.last_name%></h3>
-                        <%=s.industry%> <span class="muted">(<%=s.years%> yrs)</span>
-                        <%if !user_signed_in? %>
+                    <div class="span4">
+                        <h3 style="margin-top:0px;margin-bottom:0px;"><%=s.first_name%> <%=s.last_name%>
+                      <%if !user_signed_in? %>
                         <%=link_to "Sign up to view!", new_user_registration_url, :class=>"btn btn-primary btn-mini"%>
                       <%elsif current_user.speaker!="1"%>
                         <%=link_to "View", connect_url(s), :class=>"btn btn-primary btn-mini"%>
                       <%end%>
-                        <br>
-                        <%=s.address%><br>
-          
+                        </h3>
+                        <%=s.bio%><br>
+                        Years of experience: <%=s.years%><br>
+                        <%=s.address%>
                     </div>
 
-                    <div class="span2">
-                      <h3 style="margin-top:0px;margin-bottom:0px;">Speaker at:</h3>
-                      <%="Elementary School<br>".html_safe if s.elementary%>
-                      <%="Middle School<br>".html_safe if s.middle%>
-                      <%="High School<br>".html_safe if s.high%>
-                      <%="College & University<br>".html_safe if s.college%>
+
+                    <div class="span3">
+                     <h3 style="margin-top:0px;margin-bottom:0px;">I want to speak about:</h3>
+                     <%=s.speak_about%>
                     </div>
 
-                    <div class="span2">
-                     <h3 style="margin-top:0px;margin-bottom:0px;">Availability</h3>
-                     <%="In Person<br>".html_safe if s.in_person%>
-                     <%="Via Skype<br>".html_safe if s.skype%>
-                    </div>
-
-                   <div class="span2">
-                      <h3 style="margin-top:0px;margin-bottom:0px;">Activities</h3>
-                      <%=s.bio.truncate(60)%>
+                    <div class="span4">
+                      <h3 style="margin-top:0px;margin-bottom:0px;">Skills:</h3>
+                      <%=s.skills%>
                     </div>
 
               </div>

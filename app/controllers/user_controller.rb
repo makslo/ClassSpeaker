@@ -31,6 +31,7 @@ class UserController < ApplicationController
 	end
 
 	def create_profile
+		#TODO add validations to flip the flag on confirm_registration
 		u = current_user
 		p = u.build_speaker_profile(params[:speaker_profile])
 		if p.save
