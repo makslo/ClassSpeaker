@@ -31,7 +31,9 @@
               <%="<span class='label label-info'>College & University</span>".html_safe if speaker.college%>
             <%end%>
             <h3><%=speaker.industry%></h3>
+            <%if speaker.years && speaker.years != 0%>
             <%=pluralize(speaker.years,'year').titleize%> Of Experience
+            <%end%>
             <h3>Activities:</h3>
             <%=speaker.bio%>
             <%if speaker.in_person || speaker.skype%>
