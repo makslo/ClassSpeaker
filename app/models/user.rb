@@ -109,4 +109,14 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
+
+	def self.set_user_address
+		where(speaker: "1").each do |u|
+			if !u.location.nil? && u.latitude.nil? && u.longitude.nil?
+				u.geocode
+				u.reverse_geocode
+				u.save
+			end
+		end
+	end
 end
