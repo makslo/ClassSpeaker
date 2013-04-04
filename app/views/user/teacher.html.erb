@@ -95,7 +95,7 @@
               
               <hr style="margin:5px;">
             <%end%>
-            <%= will_paginate @speakers %>
+            <%= will_paginate @speakers, :params=>{:school=>params[:school]} %>
             <%end%>
 
           </div>
