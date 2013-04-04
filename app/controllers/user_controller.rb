@@ -47,7 +47,7 @@ class UserController < ApplicationController
 	end
 
 	def connect
-		@speaker = SpeakerProfile.find(params[:id]).user
+		@speaker = User.find(params[:id])
 	end
 
 	def connect_beta

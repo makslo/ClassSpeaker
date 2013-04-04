@@ -3,16 +3,16 @@
       <div class="row">
       	<div class="span12">
       		<div class="page-header">
-			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small> <%=@speaker.speaker_profile.career%></small><br><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Schedule an Engagement</a></h1>
+			  <h1><%=image_tag @speaker.image%> <%=@speaker.first_name%> <%=@speaker.last_name%><small> <%=@speaker.industry%></small><br><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Schedule an Engagement</a></h1>
 			</div>
       <div class="row">
         <div class="span4">
           <table>
             <tr><th>Experience</th><th>Location</th></tr>
-            <tr><td><%=@speaker.speaker_profile.years%> yrs</td><td><%=@speaker.speaker_profile.location%></td></tr>
+            <tr><td><%=@speaker.years%> yrs</td><td><%=@speaker.address%></td></tr>
           </table>
           <h3>Skills & Activities</h3>
-          <p style="padding:10px;"><%=@speaker.speaker_profile.bio%></p>
+          <p style="padding:10px;"><%=@speaker.bio%></p>
         </div>
       </div>
 

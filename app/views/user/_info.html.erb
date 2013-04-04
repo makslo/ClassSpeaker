@@ -1,4 +1,4 @@
-<%profile = speaker.speaker_profile%>
+
       <div class="page-header" style="margin-bottom:0px;">
 			  <h1>
           <div class="row">
@@ -9,9 +9,9 @@
             <%end%>
             <div class="span11">
               <h1>
-              <%=speaker.first_name%> <%=speaker.last_name%><small>, <%=profile.location%>
+              <%=speaker.first_name%> <%=speaker.last_name%><small> <%=speaker.address%>
               <%if speaker.id==current_user.id%>
-              <%=link_to "edit profile", edit_profile_url, :class=>"btn pull-right"%>
+              <%=link_to "edit profile", speaker_url, :class=>"btn pull-right"%>
               <%end%>
             </small><br>
               <%if speaker.id!=current_user.id%>
@@ -24,18 +24,18 @@
       <br>
       <div class="row">
         <div class="span5">
-             <%if profile.elementary || profile.middle || profile.high || profile.college%>
-              <%="<span class='label label-info'>Elementary School</span>".html_safe if profile.elementary%>
-              <%="<span class='label label-info'>Middle School</span>".html_safe if profile.middle%>
-              <%="<span class='label label-info'>High School</span>".html_safe if profile.high%>
-              <%="<span class='label label-info'>College & University</span>".html_safe if profile.college%>
+             <%if speaker.elementary || speaker.middle || speaker.high || speaker.college%>
+              <%="<span class='label label-info'>Elementary School</span>".html_safe if speaker.elementary%>
+              <%="<span class='label label-info'>Middle School</span>".html_safe if speaker.middle%>
+              <%="<span class='label label-info'>High School</span>".html_safe if speaker.high%>
+              <%="<span class='label label-info'>College & University</span>".html_safe if speaker.college%>
             <%end%>
-            <h3><%=profile.career%></h3>
-            <%=pluralize(profile.years,'year').titleize%> Of Experience
+            <h3><%=speaker.industry%></h3>
+            <%=pluralize(speaker.years,'year').titleize%> Of Experience
             <h3>Activities:</h3>
-            <%=profile.bio%>
-            <%if profile.in_person || profile.skype%>
-            <h3>Available <%="in person" if profile.in_person && !profile.skype%> <%="via Skype" if profile.skype && !profile.in_person%> <%="in person and via Skype" if profile.in_person && profile.skype%></h3> 
+            <%=speaker.bio%>
+            <%if speaker.in_person || speaker.skype%>
+            <h3>Available <%="in person" if speaker.in_person && !speaker.skype%> <%="via Skype" if speaker.skype && !speaker.in_person%> <%="in person and via Skype" if speaker.in_person && speaker.skype%></h3> 
             <%end%>
           
           
