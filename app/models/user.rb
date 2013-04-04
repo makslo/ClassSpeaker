@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
 		end
 		if query[:query] && !query[:query].blank?
 			searched = true
-			results += where("industry ilike ? OR bio ilike ?", "%#{query[:query]}%", "%#{query[:query]}%")
+			results += where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
 		end
 		if query[:school] && query[:school] != "0"
 			searched = true

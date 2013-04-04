@@ -9,7 +9,7 @@ class LocationResult < ActiveRecord::Base
   def self.index_locations
     delete_all
   	User.find_each do |profile|
-  		index_term(profile.address)
+  		index_term(profile.address) if profile.address
   	end
   end
 
