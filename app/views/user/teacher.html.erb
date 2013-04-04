@@ -95,7 +95,7 @@
               
               <hr style="margin:5px;">
             <%end%>
-            <%= will_paginate @speakers, :params=>{:school=>params[:school]} %>
+            <%= will_paginate @speakers, :params=>{query: params[:query], location: params[:location], school: params[:school]} %>
             <%end%>
 
           </div>
