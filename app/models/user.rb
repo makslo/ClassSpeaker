@@ -95,4 +95,12 @@ class User < ActiveRecord::Base
 		end
 		clean
 	end
+
+	def self.copy_speaker_data
+		where(speaker: "1").each do |u|
+			if u.speaker_profile
+				u.update_attributes(years: u.speaker_profile.years)
+			end
+		end
+	end
 end
