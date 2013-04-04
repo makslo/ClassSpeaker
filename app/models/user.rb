@@ -80,15 +80,15 @@ class User < ActiveRecord::Base
 		clean = []
 		usrs = []
 		if query[:location] && !query[:location].blank?
-			search = true
+			searched = true
 			results += near(query[:location], 20)
 		end
 		if query[:query] && !query[:query].blank?
-			search = true
+			searched = true
 			results += where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
 		end
 		if query[:school] && query[:school] != "0"
-			search = true
+			searched = true
 			schools = %w{elementary middle high college}
 			results += where("#{schools[query[:school].to_i-1]} = ?", true)
 		end

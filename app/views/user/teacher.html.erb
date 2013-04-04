@@ -83,12 +83,12 @@
 
                     <div class="span3">
                      <h3 style="margin-top:0px;margin-bottom:0px;">I want to speak about:</h3>
-                     <%=s.speak_about%>
+                     <%=s.speak_about.blank? ? "I haven't decided yet, but please email me with your questions" : s.speak_about%>
                     </div>
 
                     <div class="span4">
                       <h3 style="margin-top:0px;margin-bottom:0px;">Skills:</h3>
-                      <%=s.skills%>
+                      <%=s.skills.blank? ? "I haven't listed any yet, but please email me with your questions" : s.skills %>
                     </div>
 
               </div>
