@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321232048) do
+ActiveRecord::Schema.define(:version => 20130404011237) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "count"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20130321232048) do
     t.string   "address"
     t.boolean  "in_person",              :default => false
     t.boolean  "skype",                  :default => false
+    t.string   "teacher"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

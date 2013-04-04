@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :speaker, :speaker_profile_attributes,
                   :provider, :uid, :last_name, :first_name, :bio, :industry, :location, :skills, :speak_about,
-                  :elementary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address
+                  :elementary, :middle, :high, :college, :new_user, :years, :latitude, :longitude, :address, :teacher
   # attr_accessible :title, :body
   validates :first_name, :last_name, :presence=>true
   has_one :speaker_profile, :dependent => :delete
@@ -23,6 +23,12 @@ class User < ActiveRecord::Base
 	end
 
   after_validation :geocode, :reverse_geocode
+
+  TEACHERS = %w{High\ School Middle\ School Elementary\ School}
+
+  def self.get_teachers
+  	TEACHERS
+  end
 
 	def self.from_omniauth(auth)
 	  where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -78,10 +84,10 @@ class User < ActiveRecord::Base
 			results += where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
 		end
 		if results.empty?
-			clean = all
+			clean = where(speaker: "1")
 		else
 			results.each do |u| 
-				if !usrs.include?(u.id)
+				if !usrs.include?(u.id) && u.speaker == "1"
 				  clean << u
 				  usrs  << u.id
 				end

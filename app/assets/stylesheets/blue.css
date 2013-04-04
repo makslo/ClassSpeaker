@@ -66,9 +66,9 @@
     background: url("../img/noise.png") repeat scroll 0 0 #FFFFFF;
     color: #394755;
 }
-.bouncy:hover .index_icon {
+/*.bouncy:hover .index_icon:hover {
    color: #0074CC;
-}
+}*/
 
 /* Pricing Tables
 -------------------------------------------------- */
