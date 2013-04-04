@@ -74,23 +74,27 @@ class User < ActiveRecord::Base
 	end
 
 	def self.find_speakers(query)
-		blank_query = (query[:location].blank? && query[:query].blank? && query[:school] == "0")
+		searched = false
+		
 		results = []
 		clean = []
 		usrs = []
 		if query[:location] && !query[:location].blank?
+			search = true
 			results += near(query[:location], 20)
 		end
 		if query[:query] && !query[:query].blank?
+			search = true
 			results += where("industry like ? OR bio like ?", "%#{query[:query]}%", "%#{query[:query]}%")
 		end
 		if query[:school] && query[:school] != "0"
+			search = true
 			schools = %w{elementary middle high college}
 			results += where("#{schools[query[:school].to_i-1]} = ?", true)
 		end
-		if results.empty? && blank_query
+		if results.empty? && !searched
 			clean = where(speaker: "1")
-		elsif !blank_query
+		elsif searched
 			results.each do |u| 
 				if !usrs.include?(u.id) && u.speaker == "1"
 				  clean << u
