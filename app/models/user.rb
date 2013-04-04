@@ -99,7 +99,8 @@ class User < ActiveRecord::Base
 	def self.copy_speaker_data
 		where(speaker: "1").each do |u|
 			if u.speaker_profile
-				u.update_attributes(years: u.speaker_profile.years)
+				p = u.speaker_profile
+				u.update_attributes(years: p.years, bio: p.bio, location: p.location, elementary: p.elementary, middle: p.middle, high: p.high, college: p.college, skype: p.skype, in_person: p.in_person)
 			end
 		end
 	end
